@@ -9297,9 +9297,6 @@ textarea.input {
   @apply grid lg:grid-cols-4 sm:grid-cols-2 gap-8;
 }
 
-.service-list-heading {
-  @apply container;
-}
 .service-list-heading h2 {
   @apply text-4xl leading-normal;
 }
