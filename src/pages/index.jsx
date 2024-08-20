@@ -96,7 +96,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
       <Layout>
         <AOSInit />
         <section className="hero-home mt-[-100px] ">
-   <div className="container">
+          <div className="container">
             <div className="wrpr">
               {/* <ShapeAnimation /> */}
               <h2 data-aos="fade-up">{pageData.heroTitle && pageData.heroTitle}<span className="block ">
@@ -111,28 +111,28 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
               </div>
             </div>
           </div>
-      <BackgroundAnimation />
-      {/* <video */}
-                      {/* className="w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover" */}
-                      {/* src={"/videos/hero.mp4"} */}
-                       {/* poster="/images/hero.webp" */}
-                      {/* muted */}
-                      {/* autoPlay={"autoplay"} */}
-                      {/* preload="none" */}
-                      {/* loop> */}
-                      {/* video tag is not supported by your browser */}
-                    {/* </video> */}
-                    <Images
-                    imageurl={'/images/hero.webp'}
-                    styles={''}
-                    quality={100}
-                    width={'1500'}
-                    height={'1000'}
-                    alt={'SEO expert Dubai'}
-                    placeholder={true}
-                    classes={'frame-1 block w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover'}
-                  />
-      
+          <BackgroundAnimation />
+          {/* <video */}
+          {/* className="w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover" */}
+          {/* src={"/videos/hero.mp4"} */}
+          {/* poster="/images/hero.webp" */}
+          {/* muted */}
+          {/* autoPlay={"autoplay"} */}
+          {/* preload="none" */}
+          {/* loop> */}
+          {/* video tag is not supported by your browser */}
+          {/* </video> */}
+          {/* <Images */}
+          {/* imageurl={'/images/hero.webp'} */}
+          {/* styles={''} */}
+          {/* quality={100} */}
+          {/* width={'1500'} */}
+          {/* height={'1000'} */}
+          {/* alt={'SEO expert Dubai'} */}
+          {/* placeholder={true} */}
+          {/* classes={'frame-1 block w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover'} */}
+          {/* /> */}
+
         </section>
         <section className="about">
           <div className="container">
@@ -321,9 +321,9 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
         </section>
         <section className="about-bottom-2 text-center ">
           <div className="container grid gap-[30px]">
-  <h3 data-aos="fade-up" >{pageData && pageData.aboutBottom2}</h3>
-          <div className="about-bottom-2" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html:pageData &&  pageData.aboutBottom2Content }} />
-       </div>
+            <h3 data-aos="fade-up" >{pageData && pageData.aboutBottom2}</h3>
+            <div className="about-bottom-2" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html: pageData && pageData.aboutBottom2Content }} />
+          </div>
           <BlurAnimation position="bottom left" />
         </section>
         <section className="works">
@@ -590,7 +590,7 @@ focuskw
     };
   } catch (error) {
     console.error('Error fetching data:', error);
- return {
+    return {
       props: {
         homePageData: {},
         moreServicesDatas: {},
