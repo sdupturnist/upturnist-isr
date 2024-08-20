@@ -13,7 +13,7 @@ export default function ShapeAnimation({large}) {
                     width={'600'}
                     height={'600'}
                     alt={'SEO expert Dubai'}
-                    placeholder={true}
+                    placeholder={false}
                     classes={'frame-1 block sm:w-[75%] w-[95%] mx-auto'}
                   />
 
