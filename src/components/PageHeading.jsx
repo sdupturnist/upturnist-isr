@@ -29,7 +29,7 @@ export default function PageHeading({ heading, subHeading }) {
 
   return (<>
 
-<section className="hero lg:h-screen h-[80vh] flex sm:items-center items-end sm:py-20 py-6 overflow-hidden relative   mt-[-100px]">
+<section className="hero lg:h-screen flex items-center sm:py-20 py-6 overflow-hidden relative   sm:mt-[-100px]">
      <div className="hidden sm:block">
      <BlurAnimation position="bottom left" />
      </div>

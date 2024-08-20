@@ -1,35 +1,24 @@
-import { useRef } from "react";
-import videojs from "video.js";
-import VideoJS from "./Video";
+import Images from '@/components/Images';
 
-export default function ShapeAnimation({ large }) {
-    const playerRef = useRef(null);
 
-    const videoJsOptionsM3u8 = {
-        controls: false,
-        autoplay: true,
-        fluid:true,
-        muted: true,
-        loop:true,
-      
-      sources: [
-            {
-                src: '/videos/video2.mp4',
-            },
-        ],
-        plugins: {
-            httpSourceSelector: {
-                default: 'auto'
-            }
-        }
-    };
-
-   
+export default function ShapeAnimation({large}) {
     return (
         <>
-            <div className={`${!large ? "block sm:hidden" : 'large'} shape-animation-wrpr`}>
-                <VideoJS options={videoJsOptionsM3u8}  />
+  <div className={`${!large ? "block sm:hidden" : 'large'} shape-animation-wrpr`}>
+
+  <Images
+                    imageurl={'/images/video2.webp'}
+                    styles={''}
+                    quality={100}
+                    width={'600'}
+                    height={'600'}
+                    alt={'SEO expert Dubai'}
+                    placeholder={true}
+                    classes={'frame-1 block sm:w-[75%] w-[95%] mx-auto'}
+                  />
+
+            
             </div>
         </>
-    );
+    )
 }

@@ -95,10 +95,10 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
       <Metatags data={homePageData} />
       <Layout>
         <AOSInit />
-        <section className="hero-home sm:mt-[-100px] mt-[-50px]">
+        <section className="hero-home mt-[-100px]">
    <div className="container">
             <div className="wrpr">
-              <ShapeAnimation />
+              {/* <ShapeAnimation /> */}
               <h2 data-aos="fade-up">{pageData.heroTitle && pageData.heroTitle}<span className="block ">
                 <AnimatedTextCharacter text={pageData.heroAnimatedHeading && pageData.heroAnimatedHeading} />
               </span>
@@ -111,9 +111,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
               </div>
             </div>
           </div>
-         <div className="hidden sm:block">
-         <BackgroundAnimation />
-         </div>
+      <BackgroundAnimation />
         </section>
         <section className="about">
           <div className="container">
