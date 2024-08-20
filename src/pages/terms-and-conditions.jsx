@@ -37,7 +37,7 @@ export default function TermsAndConditions({ privacyPolicyData_ }) {
     );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
     try {
 
@@ -107,11 +107,15 @@ opengraphSiteName
             props: {
                 privacyPolicyData_
             },
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-
-    }
-}
-
-
+            revalidate: 10, // ISR: Revalidate every 10 seconds
+          };
+        } catch (error) {
+          console.error('Error fetching data:', error);
+       return {
+            props: {
+                privacyPolicyData_:{}
+            },
+            revalidate: 10, // ISR: Still set a revalidate time even on error
+          };
+        }
+      }

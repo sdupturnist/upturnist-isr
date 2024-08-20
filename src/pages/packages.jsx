@@ -58,7 +58,7 @@ export default function Packages({ packagesPageData, allPackagesData }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
   try {
 
@@ -162,11 +162,16 @@ opengraphSiteName
         packagesPageData,
         allPackagesData
       },
+      revalidate: 10, // ISR: Revalidate every 10 seconds
     };
   } catch (error) {
     console.error('Error fetching data:', error);
-
+ return {
+      props: {
+        packagesPageData:{},
+        allPackagesData:{},
+      },
+      revalidate: 10, // ISR: Still set a revalidate time even on error
+    };
   }
 }
-
-

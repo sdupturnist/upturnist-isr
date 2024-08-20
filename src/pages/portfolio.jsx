@@ -34,7 +34,7 @@ export default function Works({ worksPageData, worksDatas }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
   try {
 
@@ -132,11 +132,16 @@ opengraphSiteName
         worksPageData,
         worksDatas
       },
+      revalidate: 10, // ISR: Revalidate every 10 seconds
     };
   } catch (error) {
     console.error('Error fetching data:', error);
-
+ return {
+      props: {
+        worksPageData:{},
+        worksDatas:{},
+      },
+      revalidate: 10, // ISR: Still set a revalidate time even on error
+    };
   }
 }
-
-

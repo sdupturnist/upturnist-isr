@@ -95,10 +95,11 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
       <Metatags data={homePageData} />
       <Layout>
         <AOSInit />
-        <section style={{ marginTop: '-100px' }} className="hero-home">
-          <div className="container">
+        <section className="hero-home sm:mt-[-100px] mt-[-50px]">
+   <div className="container">
             <div className="wrpr">
-              <h2 data-aos="fade-up">{pageData.heroTitle && pageData.heroTitle}<span className="block">
+              <ShapeAnimation />
+              <h2 data-aos="fade-up">{pageData.heroTitle && pageData.heroTitle}<span className="block ">
                 <AnimatedTextCharacter text={pageData.heroAnimatedHeading && pageData.heroAnimatedHeading} />
               </span>
               </h2>
@@ -110,7 +111,9 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
               </div>
             </div>
           </div>
-          <BackgroundAnimation />
+         <div className="hidden sm:block">
+         <BackgroundAnimation />
+         </div>
         </section>
         <section className="about">
           <div className="container">
@@ -300,7 +303,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
         <section className="about-bottom-2 text-center ">
           <div className="container grid gap-[30px]">
   <h3 data-aos="fade-up" >{pageData && pageData.aboutBottom2}</h3>
-          <div data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html:pageData &&  pageData.aboutBottom2Content }} />
+          <div className="about-bottom-2" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html:pageData &&  pageData.aboutBottom2Content }} />
        </div>
           <BlurAnimation position="bottom left" />
         </section>

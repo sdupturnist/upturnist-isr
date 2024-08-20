@@ -495,7 +495,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
   try {
 
@@ -696,9 +696,18 @@ opengraphSiteName
         worksData,
         testimonialData
       },
+      revalidate: 10, // ISR: Revalidate every 10 seconds
     };
   } catch (error) {
     console.error('Error fetching data:', error);
-
+ return {
+      props: {
+        ___pageData:{},
+        allPackagesData:{},
+        worksData:{},
+        testimonialData:{}
+      },
+      revalidate: 10, // ISR: Still set a revalidate time even on error
+    };
   }
 }

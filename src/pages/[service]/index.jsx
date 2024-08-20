@@ -86,100 +86,125 @@ export default function Service({ servicePageData }) {
 
 
 
+export async function getStaticPaths() {
+  async function fetchServices() {
+      try {
+          const res = await fetch(wordpressGraphQlApiUrl, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  query: `
+                      query {
+                          pages {
+                              nodes {
+                                  name
+                              }
+                          }
+                      }
+                  `,
+              }),
+              cache: 'no-store'
+          });
 
-export async function getServerSideProps(context) {
-
-    const { params } = context;
-
-    const { service } = params
-
-
-    // Fetch data from an external API, database, or any other source
-    try {
-
-        //BLOG PAGE DATA
-        const serviceData = await fetch(
-            wordpressGraphQlApiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                query: ` query Posts {
-        pages(where: {name: "`+service+`"}) {
-          nodes{
-            title
-            content
-             pages{
-                subHeading
-              }
-            featuredImage{
-            node{
-              altText
-              sourceUrl
-            }
-            }
-                seo {
-                  canonical
-focuskw
-opengraphSiteName
-                    metaDesc
-                    metaKeywords
-                    title
-                    opengraphDescription
-                    opengraphSiteName
-                    opengraphUrl
-                    opengraphImage {
-                      altText
-                      link
-                      sourceUrl
-                    }
-                    opengraphType
-                    opengraphTitle
-                    opengraphModifiedTime
-                    twitterDescription
-                    twitterTitle
-                    twitterImage {
-                      sourceUrl
-                    }
-                  }
-          }
+          const data = await res.json();
+          return data?.data?.pages?.nodes || []; // Return an empty array if nodes are undefined
+      } catch (error) {
+          console.error('Error fetching services:', error);
+          return []; // Return an empty array in case of error
+      }
   }
-  }
-          `,
-            }),
-            next: { revalidate: 10 },
-        },
-            {
-                cache: 'force-cache',
-                cache: 'no-store'
-            }
-        );
 
-        const servicePageData = await serviceData.json();
+  // Fetch services and create paths
+  const services = await fetchServices();
 
+  // Ensure services is defined and not null
+  const paths = services.length > 0
+      ? services.map(service => ({
+          params: { service: service.name }
+      }))
+      : [];
 
-
-
-  
-
-
-
-        // -------------------------------------------------------------
-
-        // Pass fetched data as props to the page component
-        return {
-            props: {
-                servicePageData
-            },
-        };
-    } catch (error) {
-        console.error('Error fetching data:', error);
-
-    }
+  return {
+      paths,
+      fallback: 'blocking', // or 'false' depending on your needs
+  };
 }
 
+export async function getStaticProps(context) {
+  const { params } = context;
+  const { service } = params;
 
+  try {
+      const serviceData = await fetch(wordpressGraphQlApiUrl, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+              query: `
+                  query Posts {
+                      pages(where: {name: "${service}"}) {
+                          nodes {
+                              title
+                              content
+                              pages {
+                                  subHeading
+                              }
+                              featuredImage {
+                                  node {
+                                      altText
+                                      sourceUrl
+                                  }
+                              }
+                              seo {
+                                  canonical
+                                  focuskw
+                                  opengraphSiteName
+                                  metaDesc
+                                  metaKeywords
+                                  title
+                                  opengraphDescription
+                                  opengraphSiteName
+                                  opengraphUrl
+                                  opengraphImage {
+                                      altText
+                                      link
+                                      sourceUrl
+                                  }
+                                  opengraphType
+                                  opengraphTitle
+                                  opengraphModifiedTime
+                                  twitterDescription
+                                  twitterTitle
+                                  twitterImage {
+                                      sourceUrl
+                                  }
+                              }
+                          }
+                      }
+                  }
+              `,
+          }),
+          cache: 'no-store'
+      });
 
+      const servicePageData = await serviceData.json();
 
+      return {
+          props: {
+              servicePageData
+          },
+          revalidate: 10 // Enable Incremental Static Regeneration
+      };
+  } catch (error) {
+      console.error('Error fetching data:', error);
 
+      return {
+          props: {
+              servicePageData: null
+          },
+      };
+  }
+}

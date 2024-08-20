@@ -13,11 +13,11 @@ import PageHeading from "@/components/PageHeading";
 export default function WhoWeAre({ aboutPageData, coreValuesData, deliveryMethodData, teamsData, timelineData }) {
 
 
-  const pageData = aboutPageData.data.pages.nodes[0]
-  const _coreValues = coreValuesData.data.allCoreValues.nodes
-  const _deliveryMethod = deliveryMethodData.data.allDeliveryMethod.nodes
-  const _teamsData = teamsData.data.teams.nodes
-  const _timelineData = timelineData.data.allTimeLine.nodes
+  const pageData = aboutPageData?.data?.pages?.nodes[0]
+  const _coreValues = coreValuesData?.data?.allCoreValues?.nodes
+  const _deliveryMethod = deliveryMethodData?.data?.allDeliveryMethod?.nodes
+  const _teamsData = teamsData?.data?.teams?.nodes
+  const _timelineData = timelineData?.data?.allTimeLine?.nodes
 
 
 
@@ -207,7 +207,7 @@ export default function WhoWeAre({ aboutPageData, coreValuesData, deliveryMethod
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 
   try {
 
@@ -429,11 +429,19 @@ opengraphSiteName
         teamsData,
         timelineData
       },
+      revalidate: 10, // ISR: Revalidate every 10 seconds
     };
   } catch (error) {
     console.error('Error fetching data:', error);
-
+ return {
+      props: {
+        aboutPageData:{},
+        coreValuesData:{},
+        deliveryMethodData:{},
+        teamsData:{},
+        timelineData:{}
+      },
+      revalidate: 10, // ISR: Still set a revalidate time even on error
+    };
   }
 }
-
-
