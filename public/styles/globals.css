@@ -967,7 +967,7 @@
 body {
   margin: 0 !important;
   padding: 0 !important;
-  background: #112b3f;
+  background: #132938;
   color: #dcf4ff;
   font-family: "Helvetica Now Text";
   overscroll-behavior-y: none;
@@ -1012,7 +1012,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #112b3f;
+  background: #132938;
 }
 
 /* Handle */
@@ -1026,7 +1026,7 @@ body {
 }
 
 .bg-primary {
-  background: #112b3f;
+  background: #132938;
 }
 
 .btn {
@@ -1040,7 +1040,7 @@ body {
 }
 .btn:hover {
   background: #dcf4ff;
-  color: #112b3f;
+  color: #132938;
 }
 
 .list-para p {
@@ -1060,7 +1060,7 @@ body {
   right: 0;
   width: 100%;
   height: 100vh;
-  background-color: #112b3f;
+  background-color: #132938;
   display: flex;
   justify-content: center;
   z-index: 999999;
@@ -1068,7 +1068,7 @@ body {
 }
 
 .modal {
-  background-color: #112b3f;
+  background-color: #132938;
   padding: 20px;
   position: relative;
   max-width: 600px;
@@ -1542,7 +1542,7 @@ select:focus {
 }
 
 .bg-primary-custom {
-  background: #112b3f;
+  background: #132938;
 }
 
 .show-nav {
@@ -5287,7 +5287,7 @@ blockquote::after {
 }
 
 select option {
-  background: #112b3f !important;
+  background: #132938 !important;
   color: #dcf4ff !important;
 }
 
@@ -10233,4 +10233,13 @@ textarea.input {
 .about-bottom-2 p {
   margin-bottom: 20px;
   display: block;
+}
+
+.video-js, video, .vjs-poster {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+.video-js *, video *, .vjs-poster * {
+  background: transparent !important;
+  background-color: transparent !important;
 }

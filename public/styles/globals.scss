@@ -10665,3 +10665,28 @@ textarea.input {
                 display:block;
         }
  }
+
+
+
+// .shape-animation-wrpr {
+//         position: relative;
+//         width: 100%; /* Or a specific width */
+//         height: 100%; /* Or a specific height */
+//         max-width: 800px; /* Maximum width if needed */
+//         max-height: 600px; /* Maximum height if needed */
+//     }
+    
+//     .video-js {
+//         width: 100% !important; /* Ensure player takes full width of container */
+//         height: 100% !important; /* Ensure player takes full height of container */
+//     }
+    
+
+.video-js, video, .vjs-poster{
+        background:transparent !important;
+        background-color:transparent !important;
+        *{
+                background:transparent !important;
+                background-color:transparent !important;
+        }
+}
