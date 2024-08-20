@@ -30,7 +30,10 @@
         "react-slick": "^0.30.2",
         "scrolltrigger": "^1.0.1",
         "slick-carousel": "^1.8.1",
-        "swiper": "^11.1.4"
+        "swiper": "^11.1.4",
+        "video.js": "^7.18.1",
+        "videojs-contrib-quality-levels": "^2.1.0",
+        "videojs-http-source-selector": "^1.1.6"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.19",

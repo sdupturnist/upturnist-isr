@@ -43,8 +43,10 @@ export default function PageHeading({ heading, subHeading }) {
             <p className="md:text-[1.6rem] text-[1rem]" data-aos="fade-up" data-delay="500">{subHeading && subHeading}</p>
           </div>
           </div>
-          <div className="flex items-center sm:order-2 order-1">
-            <ShapeAnimation large />
+          <div className="items-center sm:order-2 order-1">
+           <div>
+           <ShapeAnimation large />
+           </div>
           </div>
         </div>
       </div>
