@@ -1573,11 +1573,6 @@ select:focus {
   }
 }
 @media only screen and (max-width: 999px) {
-  .gradient-animation {
-    transform: scale(5);
-  }
-}
-@media only screen and (max-width: 999px) {
   .gradient-animation #bg-wrap {
     transform: scale(6);
   }
