@@ -85,10 +85,7 @@ export default function Contact({ contactPageData, initialData }) {
                     </div>
                   </div>
                 </div>
-                <div className="wrpr-4">
-                  <ShapeAnimation large />
-                </div>
-              </div>
+               </div>
             </div>
           </div>
           <BackgroundAnimation />

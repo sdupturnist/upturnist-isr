@@ -38,7 +38,7 @@ export default function Blogs({ blogPageDatas, getAllBlogsData }) {
 
 
 
-                                    return (<Link title={`Read blog: ${blog.title}`} href={`${frontendUrl}/blogs/${blog.slug}/`}  key={key}>
+                                    return (<Link className="w-full" title={`Read blog: ${blog.title}`} href={`${frontendUrl}/blogs/${blog.slug}/`}  key={key}>
                                         {blog.featuredImage && <Images
                                             imageurl={blog.featuredImage.node.sourceUrl}
                                             styles={''}
@@ -51,7 +51,9 @@ export default function Blogs({ blogPageDatas, getAllBlogsData }) {
                                         />
                                         }
                                         <h2>{blog.title}</h2>
-                                         <p><TruncatedText text={blog && cleanHTML(blog.content)} maxLength={400} /></p> 
+                                      <div className="overflow-hidden">
+                                      <p className="w-[100%] block"><TruncatedText text={blog && cleanHTML(blog.content)} maxLength={400} /></p> 
+                                      </div>
                                       </Link>)
                                 })}
                             </div>
