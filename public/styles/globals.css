@@ -967,7 +967,7 @@
 body {
   margin: 0 !important;
   padding: 0 !important;
-  background: #001a2a;
+  background: #112b3f;
   color: #dcf4ff;
   font-family: "Helvetica Now Text";
   overscroll-behavior-y: none;
@@ -1012,7 +1012,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #001a2a;
+  background: #112b3f;
 }
 
 /* Handle */
@@ -1026,7 +1026,7 @@ body {
 }
 
 .bg-primary {
-  background: #001a2a;
+  background: #112b3f;
 }
 
 .btn {
@@ -1040,7 +1040,7 @@ body {
 }
 .btn:hover {
   background: #dcf4ff;
-  color: #001a2a;
+  color: #112b3f;
 }
 
 .list-para p {
@@ -1060,7 +1060,7 @@ body {
   right: 0;
   width: 100%;
   height: 100vh;
-  background-color: #001a2a;
+  background-color: #112b3f;
   display: flex;
   justify-content: center;
   z-index: 999999;
@@ -1068,7 +1068,7 @@ body {
 }
 
 .modal {
-  background-color: #001a2a;
+  background-color: #112b3f;
   padding: 20px;
   position: relative;
   max-width: 600px;
@@ -1542,7 +1542,7 @@ select:focus {
 }
 
 .bg-primary-custom {
-  background: #001a2a;
+  background: #112b3f;
 }
 
 .show-nav {
@@ -5287,7 +5287,7 @@ blockquote::after {
 }
 
 select option {
-  background: #001a2a !important;
+  background: #112b3f !important;
   color: #dcf4ff !important;
 }
 
@@ -9151,7 +9151,7 @@ textarea.input {
 }
 
 .hero-home {
-  @apply sm:h-screen h-[80vh] flex items-end sm:py-24 py-[30px] overflow-hidden relative;
+  @apply sm:min-h-screen min-h-[90vh] flex items-end sm:py-24 py-[30px] overflow-hidden relative;
 }
 .hero-home h2 {
   @apply lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[2rem] leading-tight;
@@ -9327,7 +9327,7 @@ textarea.input {
 }
 
 .about-bottom-2 {
-  @apply sm:pt-[100px] pt-[50px] relative;
+  @apply pt-[50px] relative;
 }
 .about-bottom-2 .container {
   @apply z-10 relative;
@@ -9581,9 +9581,6 @@ textarea.input {
 }
 .about-section-1 .container {
   @apply z-10 relative;
-}
-.about-section-1 .wrpr {
-  @apply lg:flex grid flex-row lg:gap-20 gap-7;
 }
 .about-section-1 .inner {
   @apply md:text-[1.125rem] text-[1rem] grid gap-5;
@@ -10231,4 +10228,9 @@ textarea.input {
   .video-animation {
     transform: scale(3);
   }
+}
+
+.about-bottom-2 p {
+  margin-bottom: 20px;
+  display: block;
 }

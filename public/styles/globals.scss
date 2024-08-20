@@ -9031,7 +9031,7 @@ textarea.input {
 
 
 .hero-home {
-        @apply sm:h-screen h-[80vh] flex items-end sm:py-24 py-[30px] overflow-hidden relative;
+        @apply sm:min-h-screen min-h-[90vh] flex items-end sm:py-24 py-[30px] overflow-hidden relative;
     
         h2 {
             @apply lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[2rem] leading-tight;
@@ -9273,7 +9273,7 @@ textarea.input {
     
        
     .about-bottom-2 {
-        @apply sm:pt-[100px] pt-[50px] relative;
+        @apply  pt-[50px] relative;
     
         .container {
             @apply z-10 relative;
@@ -9790,9 +9790,9 @@ textarea.input {
                     @apply z-10 relative;
                 }
             
-                .wrpr {
-                    @apply lg:flex grid flex-row lg:gap-20 gap-7;
-                }
+                // .wrpr {
+                //     @apply lg:flex grid flex-row lg:gap-20 gap-7;
+                // }
             
                 .inner {
                     @apply md:text-[1.125rem] text-[1rem] grid gap-5;
@@ -10656,4 +10656,12 @@ textarea.input {
                         }
 
                         
+ }
+
+
+ .about-bottom-2{
+        p{
+                margin-bottom: 20px;
+                display:block;
+        }
  }
