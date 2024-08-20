@@ -112,26 +112,26 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
             </div>
           </div>
       <BackgroundAnimation />
-      <video
-                      className="w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover"
-                      src={"/videos/hero.mp4"}
-                       poster="/images/hero.webp"
-                      muted
-                      autoPlay={"autoplay"}
-                      preload="none"
-                      loop>
-                      video tag is not supported by your browser
-                    </video>
-                    {/* <Images */}
-                    {/* imageurl={'/images/hero.webp'} */}
-                    {/* styles={''} */}
-                    {/* quality={100} */}
-                    {/* width={'1500'} */}
-                    {/* height={'1000'} */}
-                    {/* alt={'SEO expert Dubai'} */}
-                    {/* placeholder={true} */}
-                    {/* classes={'frame-1 block w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover'} */}
-                  {/* /> */}
+      {/* <video */}
+                      {/* className="w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover" */}
+                      {/* src={"/videos/hero.mp4"} */}
+                       {/* poster="/images/hero.webp" */}
+                      {/* muted */}
+                      {/* autoPlay={"autoplay"} */}
+                      {/* preload="none" */}
+                      {/* loop> */}
+                      {/* video tag is not supported by your browser */}
+                    {/* </video> */}
+                    <Images
+                    imageurl={'/images/hero.webp'}
+                    styles={''}
+                    quality={100}
+                    width={'1500'}
+                    height={'1000'}
+                    alt={'SEO expert Dubai'}
+                    placeholder={true}
+                    classes={'frame-1 block w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover'}
+                  />
       
         </section>
         <section className="about">
