@@ -57,7 +57,35 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
                     </div>
                     <div data-aos="fade-up" className="blog-content" dangerouslySetInnerHTML={{ __html: singleBlog?.content }} />
                     <p className="text-[24px]">{formatBlogDate(singleBlog?.date)}</p>
-               
+                    <div className="inner-3">
+                      <h3 data-aos="fade-up">More blogs</h3>
+                      <div className="inner-4">
+                        {allBlogs && allBlogs.filter(post => post.slug !== router.query.slug).map((blog, key) => (
+                          <Link
+                            key={key}
+                            title={`Read blog: ${blog.title}`}
+                            aria-label={`Read blog: ${blog.title}`}
+                            href={`${frontendUrl}/blogs/${blog.slug}/`}
+                            data-aos="fade-up"
+                            className="grid gap-5 block"
+                          >
+                            {blog.featuredImage && <Images
+                              imageurl={blog.featuredImage.node.sourceUrl}
+                              styles={''}
+                              quality={100}
+                              width={'500'}
+                              height={'500'}
+                              alt={blog.featuredImage.node.altText}
+                              title={blog.featuredImage.node.altText}
+                              placeholder={false}
+                              classes={'rounded-3xl w-full block transform duration-500 ease-in-out filter grayscale opacity-50 hover:opacity-80 hover:grayscale-0'}
+                            />}
+                            <h2>{blog.title}</h2>
+                            <p><TruncatedText text={cleanHTML(blog.content)} maxLength={400} /></p>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
