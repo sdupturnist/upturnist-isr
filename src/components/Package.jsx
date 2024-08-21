@@ -60,7 +60,7 @@ export default function Packages({ type, title, packages, content }) {
 
     return (<>
         {type !== 'mini' ?
-            <div className="package-" >
+            <div className="package- " >
                 {!isVisible && <div className="wrpr-1 bg-price-package">
                     <div className="inner-1 ">
                         <h4 >{title} Package</h4>
@@ -99,8 +99,8 @@ export default function Packages({ type, title, packages, content }) {
 
             </div>
             :
-            <div className="wrpr-3">
-                <div className="inner-3 ">
+            <div className="package-  wrpr-3 bg-price-package">
+                <div className="inner-3 bg-price-package">
                     <div className="inner-4 ">
                         <h4 >{title}</h4>
                         <span className="package-label- ">Package</span>
@@ -108,7 +108,7 @@ export default function Packages({ type, title, packages, content }) {
                     </div>
 
                 </div>
-                <div className="key--2 ">Key Benefits</div>
+                <div className="bg-sky-900 bg-opacity-35 p-[15px]">Key Benefits</div>
                 <div className="key--data-2 list-content-package" dangerouslySetInnerHTML={{ __html: content }} />
 
                 <div className="wrpr-4 ">
