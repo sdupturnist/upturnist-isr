@@ -28,7 +28,7 @@ const nextConfig = {
         },
         {
           source: '/blogs/ultimate-guide-standout-branding-in-dubai/',
-          destination: '/blogs/ultimate-guide-boosting-website-ranking/',
+          destination: '/blogs/ultimate-guide-standout-branding-dubai/',
           permanent: true,
         },
         {
