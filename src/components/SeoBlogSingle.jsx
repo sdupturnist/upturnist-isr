@@ -35,7 +35,10 @@ export default function MetatagsBlogSingle({ data }) {
                     <meta name="theme-color" content="#ffffff" />
                       <meta name="description" content={seo.metaDesc && seo.metaDesc} />
                     <meta name="keywords" content={seo.focuskw && seo.focuskw} />
-                    <link rel="canonical" href={(frontendUrl + currentPath).replace(/([^:]\/)\/+/g, "$1").replace(/index/g, "").replace(/\/$/, "")} />
+                    <link rel="canonical" href={(frontendUrl + currentPath + '/')
+    .replace(/([^:]\/)\/+/g, "$1") // Remove duplicate slashes
+    .replace(/index\/?/g, "") // Remove "index" and optional trailing slash
+} />
                     <meta name="robots" content="index, follow" />
                     <meta property="og:locale" content="en_US" />
                     <meta property="og:type" content="website" />
