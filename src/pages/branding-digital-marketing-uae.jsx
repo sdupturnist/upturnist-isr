@@ -220,8 +220,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
                     <div className="items-center grid gap-3 sm:order-1 order-2">
                       <div className="lg:flex grid gap-[50px] mt-10">
                         {packageData && packageData.map((item, key) => {
-                          return <div key={key} data-aos="fade-up" data-aos-delay={`${key + 1}00`} >
-                            <Package type="mini" key={key} title={item.title} packages={item.packages} content={item.content} /></div>
+                          return <div key={key} data-aos="fade-up" data-aos-delay={`${key + 1}00`} ><Package type="mini" key={key} title={item.title} packages={item.packages} content={item.content} /></div>
                         })}
                       </div>
                     </div>
@@ -321,7 +320,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
 
 
           <section
-            className={`flex items-center sm:py-[150px] py-[50px]  relative text-center px-6`} >
+            className={`flex items-center sm:py-[150px] py-[50px] overflow-hidden relative text-center px-6`} >
             <div className="container z-10 relative">
               <div className="lg:w-9/12 grid gap-5 mx-auto">
                 <div dangerouslySetInnerHTML={{ __html: pageData && pageData.landingPage1.seoHeading1 }} />
@@ -339,7 +338,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
 
 
 
-          <section className="sm:pt-[200px] pt-[150px] relative text-center flex items-center">
+          <section className="sm:pt-[200px] pt-[150px] relative text-center flex items-center bg-primary">
             <div className="container z-10 relative sm:mb-16">
               <div>
                 <div>
@@ -386,7 +385,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
                             />
                           </div>
 
-                          <div className='text-center mb-0  lg:text-start lg:basis-[100%] bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3xl sm:p-16 p-8 content-p'>
+                          <div className='text-center sm:mb-0 mb-[120px] lg:text-start lg:basis-[100%] bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3xl sm:p-16 p-8 content-p'>
                             {/* <div dangerouslySetInnerHTML={{ __html: cleanedItem }} /> */}
 
 
@@ -431,13 +430,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
             </div>
           </section>
 
-          <section className="about-bottom-2 text-center sm:pt-[100px]">
-          <div className="container grid gap-[30px]">
-            <h3 data-aos="fade-up" >{pageData && pageData.landingPage1.aboutBottom2Heading}</h3>
-            <div className="about-bottom-2 !sm:pt-[70px] !pt-0" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html: pageData && pageData.landingPage1.aboutBottom2Content }} />
-          </div>
-          <BlurAnimation position="bottom left" />
-        </section>
+
 
           <section className="sm:py-32 py-6 relative overflow-x-hidden text-center">
             <div className="z-10 relative">
@@ -463,7 +456,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
               backgroundSize: 'cover !important',
               background: `url(${pageData && pageData.landingPage1.bottomBackground.node.sourceUrl})`
             }}
-            className={`flex items-center sm:py-[150px] py-6 overflow-hidden relative text-center bg-overlay-seo sm:h-screen h-[60vh] px-6`} >
+            className={`flex items-center sm:py-[150px] py-6 overflow-hidden relative text-center bg-overlay-seo h-screen px-6`} >
             <div className="container z-10 relative">
               <div className="lg:w-10/12 grid gap-5 mx-auto">
                 <h2 className="lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[2rem] leading-tight mb-2">
@@ -517,7 +510,6 @@ export async function getStaticProps(context) {
         query: `  query Posts {
   pages(where: {id: 3915}) {
     nodes {
-  
       title
       content
       featuredImage {
@@ -564,8 +556,6 @@ export async function getStaticProps(context) {
         service3List
         services1List
         testimonialHeading
-        aboutBottom2Heading
-        aboutBottom2Content
       }
       seo {
         canonical
