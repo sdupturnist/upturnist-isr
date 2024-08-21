@@ -69,7 +69,7 @@ export default function Search() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search here..."
-                  className="border-0 w-full bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white"
+                  className="border-0 w-full bg-sky-900 bg-opacity-30  backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white"
                 />
                 <button
                   onClick={handleSearch}
