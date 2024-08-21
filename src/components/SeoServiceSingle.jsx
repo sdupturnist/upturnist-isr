@@ -31,10 +31,9 @@ export default function MetatagsServiceSingle({ data }) {
                     <link rel="manifest" href="/site.webmanifest" />
                     <meta name="msapplication-TileColor" content="#da532c" />
                     <meta name="theme-color" content="#ffffff" />
-
-  <meta name="description" content={seo.metaDesc && seo.metaDesc} />
+                    <meta name="description" content={seo.metaDesc && seo.metaDesc} />
                     <meta name="keywords" content={seo.focuskw && seo.focuskw} />
-                    <link rel="canonical" href={(frontendUrl + currentPath + '/').replace(/([^:]\/)\/+/g, "$1")} />
+                    <link rel="canonical" href={frontendUrl} />
                     <meta name="robots" content="index, follow" />
                     <meta property="og:locale" content="en_US" />
                     <meta property="og:type" content="website" />
