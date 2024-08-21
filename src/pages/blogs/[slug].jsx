@@ -43,17 +43,7 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
                   <div className="inner-2">
                     <h1 data-aos="fade-up">{singleBlog && singleBlog?.title}​</h1>
                     <div data-aos="fade-up">
-                      {singleBlog && <Images
-                        imageurl={singleBlog?.featuredImage?.node?.sourceUrl || 'sample-link'}
-                        styles={''}
-                        quality={100}
-                        width={'1000'}
-                        height={'500'}
-                        alt={singleBlog?.featuredImage?.node?.altText || 'no alt'}
-                        title={singleBlog?.featuredImage?.node?.altText || 'no alt'}
-                        placeholder={true}
-                        classes={'w-full block'}
-                      />}
+                     
                     </div>
                     <div data-aos="fade-up" className="blog-content" dangerouslySetInnerHTML={{ __html: singleBlog?.content }} />
                     <p className="text-[24px]">{formatBlogDate(singleBlog?.date)}</p>
