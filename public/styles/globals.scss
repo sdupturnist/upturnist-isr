@@ -4919,7 +4919,7 @@ blockquote::after {
                 font-size: 3rem;
 
                 @media only screen and (max-width: 575px) {
-                        font-size: 2rem;
+                        font-size: 2rem !important;
                 }
         }
 
@@ -4928,7 +4928,7 @@ blockquote::after {
                 font-size: 2.5rem;
 
                 @media only screen and (max-width: 575px) {
-                        font-size: 1.8rem;
+                        font-size: 1.8rem !important;
                 }
         }
 
@@ -4936,7 +4936,7 @@ blockquote::after {
                 font-size: 2rem;
 
                 @media only screen and (max-width: 575px) {
-                        font-size: 1.7rem;
+                        font-size: 1.7rem !important;
                 }
         }
 
@@ -4944,7 +4944,7 @@ blockquote::after {
                 font-size: 1.8rem;
 
                 @media only screen and (max-width: 575px) {
-                        font-size: 1.6rem;
+                        font-size: 1.6rem !important;
                 }
         }
 
@@ -4952,7 +4952,7 @@ blockquote::after {
                 font-size: 1.5rem;
 
                 @media only screen and (max-width: 575px) {
-                        font-size: 1.5rem;
+                        font-size: 1.5rem !important;
                 }
         }
 
@@ -4960,7 +4960,7 @@ blockquote::after {
                 font-size: 1.2rem;
 
                 @media only screen and (max-width: 575px) {
-                        font-size: 1.4rem;
+                        font-size: 1.4rem !important;
                 }
         }
 
@@ -4984,7 +4984,7 @@ blockquote::after {
                 font-size: 1.3rem;
 
                 @media only screen and (max-width: 575px) {
-                        font-size: 1rem;
+                        font-size: 1rem !important;
                 }
         }
 
@@ -5022,6 +5022,11 @@ list-style: disc;
                         // }
 
                 }
+        }
+
+        img{
+                display: block;
+                margin: 32px 0; 
         }
 }
 

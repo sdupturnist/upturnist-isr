@@ -5172,7 +5172,7 @@ blockquote::after {
 }
 @media only screen and (max-width: 575px) {
   .blog-content h1 {
-    font-size: 2rem;
+    font-size: 2rem !important;
   }
 }
 .blog-content h2 {
@@ -5180,7 +5180,7 @@ blockquote::after {
 }
 @media only screen and (max-width: 575px) {
   .blog-content h2 {
-    font-size: 1.8rem;
+    font-size: 1.8rem !important;
   }
 }
 .blog-content h3 {
@@ -5188,7 +5188,7 @@ blockquote::after {
 }
 @media only screen and (max-width: 575px) {
   .blog-content h3 {
-    font-size: 1.7rem;
+    font-size: 1.7rem !important;
   }
 }
 .blog-content h4 {
@@ -5196,7 +5196,7 @@ blockquote::after {
 }
 @media only screen and (max-width: 575px) {
   .blog-content h4 {
-    font-size: 1.6rem;
+    font-size: 1.6rem !important;
   }
 }
 .blog-content h5 {
@@ -5204,7 +5204,7 @@ blockquote::after {
 }
 @media only screen and (max-width: 575px) {
   .blog-content h5 {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
   }
 }
 .blog-content h6 {
@@ -5212,7 +5212,7 @@ blockquote::after {
 }
 @media only screen and (max-width: 575px) {
   .blog-content h6 {
-    font-size: 1.4rem;
+    font-size: 1.4rem !important;
   }
 }
 .blog-content img {
@@ -5234,7 +5234,7 @@ blockquote::after {
 @media only screen and (max-width: 575px) {
   .blog-content p,
   .blog-content li {
-    font-size: 1rem;
+    font-size: 1rem !important;
   }
 }
 .blog-content .has-large-font-size {
@@ -5252,6 +5252,10 @@ blockquote::after {
 .blog-content ul li {
   margin-left: 22px;
   margin-bottom: 16px;
+}
+.blog-content img {
+  display: block;
+  margin: 32px 0;
 }
 
 .cursor {
