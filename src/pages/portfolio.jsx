@@ -107,6 +107,10 @@ opengraphSiteName
             nodes {
               title
               content
+              works{
+                link
+                projectStory
+              }
               featuredImage{
                 node{
                   sourceUrl

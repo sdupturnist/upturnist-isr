@@ -967,8 +967,6 @@
 body {
   margin: 0 !important;
   padding: 0 !important;
-  background: #152a37;
-  color: #dcf4ff;
   font-family: "Helvetica Now Text";
   overscroll-behavior-y: none;
   user-select: none;
@@ -1008,21 +1006,6 @@ body {
 /* width */
 ::-webkit-scrollbar {
   width: 5px !important;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #152a37;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #002841;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #003455;
 }
 
 .bg-primary {
@@ -9353,7 +9336,7 @@ textarea.input {
 }
 
 .who-we-are {
-  @apply sm:pb-20  relative z-50;
+  @apply sm:pb-20  relative;
 }
 .who-we-are .container {
   @apply z-10 relative;
@@ -9963,9 +9946,6 @@ textarea.input {
 .package-page .inner h1 p {
   @apply sm:text-[2.5rem] text-[2rem] leading-tight text-center;
 }
-.package-page .inner p {
-  @apply md:text-[1.2rem] text-center;
-}
 .package-page .inner-2 {
   @apply lg:flex grid gap-[50px] mt-10;
 }
@@ -10056,6 +10036,14 @@ textarea.input {
 }
 .package- .wrpr-4 {
   @apply bg-sky-950 bg-opacity-70 backdrop-filter backdrop-blur-lg  p-7 pt-0 overflow-hidden rounded-b-[16px];
+}
+.package- .package-full-desc * {
+  font-size: 13px;
+  opacity: 0.8;
+  line-height: 20px;
+}
+.package- .package-full-desc strong {
+  font-weight: 600;
 }
 
 .compare-package {

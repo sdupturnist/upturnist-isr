@@ -34,11 +34,10 @@ export default function Packages({ packagesPageData, allPackagesData }) {
             <div className="wrpr">
               <div className="inner">
                 <h1 data-aos="fade-up"  dangerouslySetInnerHTML={{ __html: pageData.content && pageData.content }} />
-                <p  data-aos="fade-up" data-delay="500">{pageData.pages.subHeading && pageData.pages.subHeading}</p>
+                <p  data-aos="fade-up" className="text-center text-[1.25rem]" data-delay="500">{pageData.pages.subHeading && pageData.pages.subHeading}</p>
                 <div className="inner-2">
                   {packageData && packageData.map((item, key) => {
-                    // console.log(item.content)
-                    return <Package key={key} title={item.title} packages={item.packages} content={item.content} />
+                    return <Package key={key} title={item.title} packages={item.packages} content={item.content} desc={item.packages.description} />
                   })}
                 </div>
                 <ComparePackages data={packageData} />
@@ -138,6 +137,7 @@ opengraphSiteName
           title
           content
           packages{
+          description
             features
             price
             subHeading

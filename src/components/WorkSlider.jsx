@@ -14,10 +14,14 @@ export default function ThreeDSlider(props) {
     const swiperRef = useRef(null); // Reference for Swiper instance
 
     const openModal = (item) => {
+
+   
         setModalData({
             imageUrl: item.featuredImage.node.sourceUrl,
             heading: item.title,
-            description: item.content && item.content.replace("Client: ", "").replace("Project: ", "").replace("|", "<br/>")
+            description: item.content && item.content.replace("Client: ", "").replace("Project: ", "").replace("|", "<br/>"),
+            link: item.works.link,
+            projectStory: item.works.projectStory,
         });
         setShowModal(true);
         setModalFor('work');

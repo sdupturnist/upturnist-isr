@@ -5,7 +5,7 @@ import { useModalContext } from '@/context/modalContext';
 import React, { useState, useEffect, useRef } from 'react';
 
 
-export default function Packages({ type, title, packages, content }) {
+export default function Packages({ type, title, packages, content, desc }) {
 
 
     const { setModalFor, setShowModal, setModalData, setIsClassAdded } = useModalContext()
@@ -59,8 +59,10 @@ export default function Packages({ type, title, packages, content }) {
     };
 
     return (<>
+
+ 
         {type !== 'mini' ?
-            <div className="package- " >
+            <div className="package- border border-solid border-white border-opacity-10" >
                 {!isVisible && <div className="wrpr-1 bg-price-package">
                     <div className="inner-1 ">
                         <h4 >{title} Package</h4>
@@ -96,7 +98,7 @@ export default function Packages({ type, title, packages, content }) {
                         </li>
                     })}
                 </ul>
-
+                <div className="package-full-desc p-[24px] grid gap-[7px] [&>*]:block" dangerouslySetInnerHTML={{ __html: desc }} />
             </div>
             :
             <div className="package-  wrpr-3 bg-price-package">
@@ -116,7 +118,7 @@ export default function Packages({ type, title, packages, content }) {
                         Starting at AED {packages.price}
                     </button>
                 </div>
-
+            
             </div>
         }
     </>)

@@ -20,8 +20,8 @@
 body {
         margin: 0 !important;
         padding: 0 !important;
-        background: $PC;
-        color: $WHITE;
+        // background: $PC;
+        // color: $WHITE;
         font-family: 'Helvetica Now Text';
 
         overscroll-behavior-y: none;
@@ -67,22 +67,6 @@ body {
         width: 5px !important;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-        background: $PC;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-        background: #002841;
-
-
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-        background: #003455;
-}
 
 
 .bg-primary {
@@ -9318,7 +9302,7 @@ textarea.input {
     
     .who-we-are {
     
-        @apply sm:pb-20  relative z-50;
+        @apply sm:pb-20  relative;
     
         .container {
             @apply z-10 relative;
@@ -10344,9 +10328,7 @@ textarea.input {
                         @apply sm:text-[2.5rem] text-[2rem] leading-tight text-center;
                     }
                  }
-            p{
-                @apply md:text-[1.2rem] text-center;
-            }
+          
             }
              
             .inner-2 {
@@ -10462,8 +10444,21 @@ textarea.input {
                 @apply   bg-sky-950 bg-opacity-70 backdrop-filter backdrop-blur-lg  p-7 pt-0 overflow-hidden rounded-b-[16px];
             }
             
+
+            .package-full-desc {
+            
+            *{
+                font-size: 13px;
+    opacity: 0.8;
+    line-height: 20px;
+            }
+
+            strong{
+                font-weight: 600;
+            }
                        
             }
+        }
             
             
             

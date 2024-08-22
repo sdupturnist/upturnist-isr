@@ -12,6 +12,7 @@ import ScrollToTopPage from "./ScrollToTopPage";
 import QuickContactForm from "./Forms/QuickEnquiryForm";
 import PackageBookingForm from "./Forms/PackageBookingForm";
 import { useThemeContext } from "@/context/themeContext";
+import Link from "next/link";
 
 
 
@@ -29,7 +30,7 @@ export default function Layout({ children, type }) {
   };
 
   return (
-    <div className={`bg-${theme}-background text-${theme}-text`}>
+    <div>
       {type == 'landing-page' ?
         <Header type="landing-page" />
         :
@@ -66,8 +67,19 @@ export default function Layout({ children, type }) {
               </div>
               <div className="flex items-center">
                 <div className="lg:p-10 py-10 grid gap-7">
-                  <h3 className="font-medium text-5xl">{modalData.heading}</h3>
-                  {/* <div  className="text-lg" dangerouslySetInnerHTML={{ __html: modalData.description}} /> */}
+                  <h3 className="font-medium sm:text-5xl text-[34px]">{modalData.heading}</h3>
+                  {modalData.description && <div className="text-lg capitalize" dangerouslySetInnerHTML={{ __html: modalData.description }} />}
+                  {modalData.projectStory && <div className="text-lg" dangerouslySetInnerHTML={{ __html: modalData.projectStory }} />}
+                  {modalData.link && <div className="mt-[30px]">
+                    <Link
+                      title={`Visit ${modalData.heading}`}
+                      aria-label={`Visit ${modalData.heading}`}
+                      href={modalData.link || '#'} // Default to '#' if modalData.link is falsy
+                      className="btn button"
+                    >
+                      Visit website
+                    </Link>
+                  </div>}
 
                 </div>
               </div>
