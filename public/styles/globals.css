@@ -967,6 +967,8 @@
 body {
   margin: 0 !important;
   padding: 0 !important;
+  background: #152a37;
+  color: #dcf4ff;
   font-family: "Helvetica Now Text";
   overscroll-behavior-y: none;
   user-select: none;
