@@ -29,30 +29,35 @@ export default function Packages({ packagesPageData, allPackagesData }) {
       <Layout>
         <AOSInit />
         <section style={{ marginTop: '-120px' }} className="package-page">
-          <BlurAnimation position="bottom left" />
+          <BlurAnimation position="top left" />
           <div className="container">
             <div className="wrpr">
+           
               <div className="inner">
-                <h1 data-aos="fade-up"  dangerouslySetInnerHTML={{ __html: pageData.content && pageData.content }} />
-                <p  data-aos="fade-up" className="text-center text-[1.25rem]" data-delay="500">{pageData.pages.subHeading && pageData.pages.subHeading}</p>
+                <h1 data-aos="fade-up" dangerouslySetInnerHTML={{ __html: pageData.content && pageData.content }} />
+                <p data-aos="fade-up" className="text-center text-[1.25rem]" data-delay="500">{pageData.pages.subHeading && pageData.pages.subHeading}</p>
                 <div className="inner-2">
                   {packageData && packageData.map((item, key) => {
-                    return <Package key={key} title={item.title} packages={item.packages} content={item.content} desc={item.packages.description} />
+                    return <Package key={key} title={item.title} packages={item.packages} content={item.content} />
                   })}
                 </div>
                 <ComparePackages data={packageData} />
               </div>
-              {/* <div className="flex items-center sm:order-2 order-1"> */}
-              {/* <ShapeAnimation large /> */}
-              {/* </div> */}
+             </div>
+             <div className="sm:max-w-[92%] mx-auto sm:pt-[70px]">
+            {packageData && packageData.map((item, key) => {
+                return <div key={key}>
+                <h3 className="sm:text-[40px] text-[32px] mt-[40px] mb-[20px]">{item.title}</h3>
+                <div className="package-full-desc grid gap-[12px] [&>*]:block" dangerouslySetInnerHTML={{ __html: item.packages.description }} />
+                </div>
+              })}
             </div>
           </div>
           <div className="inner-3">
-            <BackgroundAnimation />
+            {/* <BackgroundAnimation /> */}
           </div>
-        </section>
-
-      </Layout>
+ </section>
+ </Layout>
     </>
   );
 }
@@ -166,10 +171,10 @@ opengraphSiteName
     };
   } catch (error) {
     console.error('Error fetching data:', error);
- return {
+    return {
       props: {
-        packagesPageData:{},
-        allPackagesData:{},
+        packagesPageData: {},
+        allPackagesData: {},
       },
       revalidate: 10, // ISR: Still set a revalidate time even on error
     };

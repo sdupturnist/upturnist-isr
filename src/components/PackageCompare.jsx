@@ -60,7 +60,7 @@ export default function ComparePackages({ data }) {
 
 
 
-        <div className="compare-package">
+        <div className="compare-package ">
             <h4>Compare Plans</h4>
             <div className="inner-1 ">
                 {data.map((item, key) => {
@@ -72,7 +72,7 @@ export default function ComparePackages({ data }) {
                 return <>
 
                     <div key={key}>
-                        <div className="inner-2 " style={{ display: currentBox === key + 1 ? 'block' : 'none' }}>
+                        <div className="inner-2  border border-solid border-white border-opacity-10" style={{ display: currentBox === key + 1 ? 'block' : 'none' }}>
                             <div className="inner-3 bg-price-package">
                                 <div className="inner-4 ">
                                     <h3>{item.title}</h3>

@@ -5,7 +5,7 @@ import { useModalContext } from '@/context/modalContext';
 import React, { useState, useEffect, useRef } from 'react';
 
 
-export default function Packages({ type, title, packages, content, desc }) {
+export default function Packages({ type, title, packages, content }) {
 
 
     const { setModalFor, setShowModal, setModalData, setIsClassAdded } = useModalContext()
@@ -98,10 +98,10 @@ export default function Packages({ type, title, packages, content, desc }) {
                         </li>
                     })}
                 </ul>
-                <div className="package-full-desc p-[24px] grid gap-[7px] [&>*]:block" dangerouslySetInnerHTML={{ __html: desc }} />
+                {/* <div className="package-full-desc p-[24px] grid gap-[7px] [&>*]:block" dangerouslySetInnerHTML={{ __html: desc }} /> */}
             </div>
             :
-            <div className="package-  wrpr-3 bg-price-package">
+            <div className="package-  wrpr-3 bg-price-package  border border-solid border-white border-opacity-10">
                 <div className="inner-3 bg-price-package">
                     <div className="inner-4 ">
                         <h4 >{title}</h4>

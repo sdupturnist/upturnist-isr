@@ -9937,7 +9937,7 @@ textarea.input {
   @apply z-10 relative;
 }
 .package-page .wrpr {
-  @apply w-11/12 mx-auto grid gap-8;
+  @apply sm:w-11/12 mx-auto grid gap-8;
 }
 .package-page .inner {
   @apply items-center grid gap-3 sm:order-1 order-2;

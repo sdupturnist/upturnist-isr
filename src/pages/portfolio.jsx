@@ -25,7 +25,10 @@ export default function Works({ worksPageData, worksDatas }) {
               <div className="inner-3" data-aos="fade-up">
                 <ThreeDSlider popup="true" data={worksDatas} />
                 {/* {_works && <WorkSlider data={_works} />} */}
-              </div>
+ </div>
+ <div className="container sm:pt-[100px]">
+ <div className="grid gap-[12px] [&>*]:block blog-content" dangerouslySetInnerHTML={{ __html: pageData.pages.additionalDescription }} />
+ </div>
             </div>
           </div>
         </section>
@@ -52,7 +55,9 @@ export async function getStaticProps(context) {
                 title
                  pages{
                     subHeading
+                  additionalDescription
                   }
+                
                     seo {
                       canonical
 focuskw
