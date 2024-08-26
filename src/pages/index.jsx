@@ -12,6 +12,7 @@ import AnimatedTextCharacter from "@/components/AnimatedText";
 import { useModalContext } from "@/context/modalContext";
 import dynamic from 'next/dynamic';
 import Loading from "@/components/Loading";
+import HeroDescription from "@/components/HeroDescription";
 
 
 export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, worksData, testimonialData }) {
@@ -90,6 +91,11 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
     ssr: false,
   });
 
+
+  const HeroDescription = dynamic(() => import('../components/HeroDescription'), {
+    loading: () => <Loading />,
+    ssr: false,
+  });
   return (
     <>
       <Metatags data={homePageData} />
@@ -103,8 +109,10 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
                 <AnimatedTextCharacter text={pageData.heroAnimatedHeading && pageData.heroAnimatedHeading} />
               </span>
               </h2>
-              <p data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html: pageData.heroDescription && pageData.heroDescription }} />
-              <div className='mt-3'>
+              <HeroDescription
+              data={pageData.heroDescription && pageData.heroDescription}
+              />
+                <div className='mt-3'>
                 <button title="Let&apos;s start" aria-label="Let&apos;s start" className="btn" type="button" onClick={openHeroModal}>
                   Let&apos;s start
                 </button>
@@ -174,9 +182,9 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
         </section>
         <section className="seo-report container-boxed">
           <div className="mx-auto">
-            <div className="wrpr">
+            <div className="wrpr ">
               <div data-aos="fade-up" className="inner">
-                <div className="wrpr">
+                <div className="wrpr wrpr-main">
                   <div className="inner">
                     <VideoHome
                       url={pageData.seoVisibilityReportVideo && pageData.seoVisibilityReportVideo}
@@ -258,7 +266,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
         </section>
         <section className="downlod">
           <div className="container">
-            <div data-aos="fade-up" className="text-center lg:text-start lg:basis-[100%] bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3xl sm:p-16 p-8 lg:flex grid lg:gap-5 gap-[16px] align-middle justify-between items-center">
+            <div data-aos="fade-up" className="box-1 text-center lg:text-start lg:basis-[100%] bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3xl sm:p-16 p-8 lg:flex grid lg:gap-5 gap-[16px] align-middle justify-between items-center">
               <h3 className="sm:text-[24px] text-[20px]">{pageData.downloadHeading && pageData.downloadHeading}</h3>
               <button title="Download" aria-label="Download" className='btn' onClick={openDownloadModal}>Download</button>
             </div>
@@ -273,7 +281,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
               </div>
               <div className="content-wrpr">
                 {_moreServicesData && _moreServicesData.map((service, key) => {
-                  return (<div data-aos="fade-up" key={key} className="link-content rounded-2xl sm:p-10 p-10 bg-gradient-2 bg-opacity-50 backdrop-filter backdrop-blur-lg  transform hover:scale-105 duration-500 ease-in-out">
+                  return (<div data-aos="fade-up" key={key} className="box-1 link-content rounded-2xl sm:p-10 p-10 bg-gradient-2 bg-opacity-50 backdrop-filter backdrop-blur-lg  transform hover:scale-105 duration-500 ease-in-out">
                     <div className="content" dangerouslySetInnerHTML={{ __html: service.content }} />
                   </div>)
                 })}
