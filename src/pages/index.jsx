@@ -264,7 +264,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
             </div>
           </div>
         </section>
-        <section className="downlod">
+        <section className="downlod relative z-[1]">
           <div className="container">
             <div data-aos="fade-up" className="box-1 bg-gradient-2 text-center lg:text-start lg:basis-[100%] bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3xl sm:p-16 p-8 lg:flex grid lg:gap-5 gap-[16px] align-middle justify-between items-center">
               <h3 className="sm:text-[24px] text-[20px]">{pageData.downloadHeading && pageData.downloadHeading}</h3>
