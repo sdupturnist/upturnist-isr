@@ -8,7 +8,6 @@ import Metatags from '@/components/Seo';
 import { AOSInit } from '@/components/Aos';
 import QuickContact from '@/components/QuickContact';
 import Images from '@/components/Images';
-import AnimatedTextCharacter from "@/components/AnimatedText";
 import { useModalContext } from "@/context/modalContext";
 import dynamic from 'next/dynamic';
 import Loading from "@/components/Loading";
@@ -93,10 +92,10 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
   });
 
 
-  // const HeroDescription = dynamic(() => import('../components/HeroDescription'), {
-  //   ///loading: () => <Loading />,
-  //   ssr: false,
-  // });
+  const HeroContent = dynamic(() => import('../components/HeroDescription'), {
+    ///loading: () => <Loading />,
+    ssr: false,
+  });
   return (
     <>
       <Metatags data={homePageData} />
@@ -105,19 +104,12 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
         <section className="hero-home mt-[-100px] ">
           <div className="container">
             <div className="wrpr">
-              {/* <ShapeAnimation /> */}
-              <h2 data-aos="fade-up">{pageData.heroTitle && pageData.heroTitle}<span className="block ">
-                <AnimatedTextCharacter text={pageData.heroAnimatedHeading && pageData.heroAnimatedHeading} />
-              </span>
-              </h2>
-              {/* <HeroDescription */}
-              {/* data={pageData.heroDescription && pageData.heroDescription} */}
-              {/* /> */}
-                <div className='mt-3'>
-                <button title="Let&apos;s start" aria-label="Let&apos;s start" className="btn" type="button" onClick={openHeroModal}>
-                  Let&apos;s start
-                </button>
-              </div>
+                <HeroContent
+              title={pageData && pageData.heroTitle}
+              animatedHeading={pageData && pageData.heroAnimatedHeading}
+              desc={pageData.heroDescription && pageData.heroDescription}
+              modalAction={openHeroModal}
+              />
             </div>
           </div>
           <BackgroundAnimation />
