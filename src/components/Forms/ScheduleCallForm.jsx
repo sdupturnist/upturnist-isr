@@ -152,11 +152,7 @@ export default function ScheduleCallForm() {
 
     // Submit 
     const submitEmail = () => {
-        // Check if the CAPTCHA is completed
-        // if (!captchaCompleted) {
-        //     console.log('Please complete the CAPTCHA');
-        //     return;
-        // }
+  
 
         validateForm();
         if (isFormValid) {
