@@ -4,98 +4,77 @@ import { AOSInit } from '@/components/Aos';
 import BlurAnimation from '@/components/BlurAnimation';
 import EnquiryService from "@/components/EnquiryService";
 import MetatagsServiceSingle from "@/components/SeoServiceSingle";
-import AnimatedTextCharacter from "@/components/AnimatedText"
+import AnimatedTextCharacter from "@/components/AnimatedText";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 
-
 export default function Service({ servicePageData }) {
+    // Check if servicePageData is null
+    if (!servicePageData) {
+        return null; 
+    }
 
+    const pageData = servicePageData.data.pages.nodes[0];
 
-    //console.log(servicePageData.data.pages.nodes[0])
-
-    const pageData = servicePageData.data.pages.nodes[0]
-
-
-
-    //console.log(pageData)
-
-
-
+    // Check if pageData is undefined or null
+    if (!pageData) {
+        // Redirect to 404 page
+        return <p>Page not found</p>; 
+    }
 
     return (
         <>
-            <MetatagsServiceSingle data={servicePageData && servicePageData} />
+            <MetatagsServiceSingle data={servicePageData} />
             <Layout>
                 <AOSInit />
-             <div className="service-single">
-             {/* <section style={{ marginTop: '-120px', */}
-                 {/* backgroundImage: `linear-gradient(rgba(0, 26, 42, 0.9), rgba(0, 26, 42, 0.9)), url(${pageData && pageData.featuredImage.node.sourceUrl})`,  */}
-                  {/* backgroundSize: 'cover', */}
-                  {/* }} className="hero lg:h-screen h-[80vh] flex items-center  sm:py-20 pt-[100px] pb-[24px] py-6 overflow-hidden relative text-center"> */}
-                    {/* <div className="container z-10 relative"> */}
-                        {/* <div className="grid"> */}
-                            {/* <div className="inner-1 "> */}
-                                {/* <h1  data-aos="fade-up"> */}
-                                    {/* {pageData && pageData.title} */}
-                                {/* </h1> */}
-                                {/* <p  data-aos="fade-up" data-delay="500">{pageData && pageData.pages.subHeading}</p> */}
-                            {/* </div> */}
-                        {/* </div> */}
-                    {/* </div> */}
-                {/* </section> */}
-
-
-                <section 
-                style={{ marginTop: '-120px',
-                    backgroundImage: `linear-gradient(rgba(0, 26, 42, 0.9), rgba(0, 26, 42, 0.9)), url(${pageData && pageData.featuredImage.node.sourceUrl})`, 
-                     backgroundSize: 'cover',
-                     }}
-                className="hero lg:h-screen h-[80vh] flex items-center  sm:py-20 pt-[100px] pb-[24px] py-6 overflow-hidden relative text-center">
-      <div className="container z-10 relative">
-        <div className="grid  gap-8">
-          <div className="items-center grid gap-7 sm:order-1 order-2">
-            <h1 className="lg:text-[5rem] md:text-[4rem] sm:text-[3rem] text-[2rem] leading-tight" data-aos="fade-up">
-              <AnimatedTextCharacter text={pageData && pageData.title} />
-            </h1>
-            <p className="md:text-[1.6rem] text-[1rem]" data-aos="fade-up" data-delay="500">{pageData && pageData.pages.subHeading}</p>
-          </div>
-        </div>
-      </div>
-      <BackgroundAnimation />
-    </section>
-
-
-                <section className="inner-2 ">
-                    <div className="container z-10 relative">
-                        <div className="wrpr-1 ">
-                            <div className="wrpr-2">
-                                <div data-aos="fade-up" className="blog-content" dangerouslySetInnerHTML={{ __html: pageData && pageData.content }} />
-                             <EnquiryService/>
+                <div className="service-single">
+                    <section
+                        style={{
+                            marginTop: '-120px',
+                            backgroundImage: `linear-gradient(rgba(0, 26, 42, 0.9), rgba(0, 26, 42, 0.9)), url(${pageData.featuredImage.node.sourceUrl})`,
+                            backgroundSize: 'cover',
+                        }}
+                        className="hero lg:h-screen h-[80vh] flex items-center sm:py-20 pt-[100px] pb-[24px] py-6 overflow-hidden relative text-center">
+                        <div className="container z-10 relative">
+                            <div className="grid gap-8">
+                                <div className="items-center grid gap-7 sm:order-1 order-2">
+                                    <h1 className="lg:text-[5rem] md:text-[4rem] sm:text-[3rem] text-[2rem] leading-tight" data-aos="fade-up">
+                                        <AnimatedTextCharacter text={pageData.title} />
+                                    </h1>
+                                    <p className="md:text-[1.6rem] text-[1rem]" data-aos="fade-up" data-delay="500">
+                                        {pageData.pages.subHeading}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <BlurAnimation position="top right" />
-                </section>
-             </div>
-
-
+                        <BackgroundAnimation />
+                    </section>
+                    <section className="inner-2">
+                        <div className="container z-10 relative">
+                            <div className="wrpr-1">
+                                <div className="wrpr-2">
+                                    <div data-aos="fade-up" className="blog-content" dangerouslySetInnerHTML={{ __html: pageData.content }} />
+                                    <EnquiryService />
+                                </div>
+                            </div>
+                        </div>
+                        <BlurAnimation position="top right" />
+                    </section>
+                </div>
             </Layout>
         </>
     );
 }
 
-
-
 export async function getStaticPaths() {
-  async function fetchServices() {
-      try {
-          const res = await fetch(wordpressGraphQlApiUrl, {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                  query: `
+    async function fetchServices() {
+        try {
+            const res = await fetch(wordpressGraphQlApiUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    query: `
                       query {
                           pages {
                               nodes {
@@ -104,46 +83,46 @@ export async function getStaticPaths() {
                           }
                       }
                   `,
-              }),
-              cache: 'no-store'
-          });
+                }),
+                cache: 'no-store'
+            });
 
-          const data = await res.json();
-          return data?.data?.pages?.nodes || []; // Return an empty array if nodes are undefined
-      } catch (error) {
-          console.error('Error fetching services:', error);
-          return []; // Return an empty array in case of error
-      }
-  }
+            const data = await res.json();
+            return data?.data?.pages?.nodes || []; // Return an empty array if nodes are undefined
+        } catch (error) {
+            console.error('Error fetching services:', error);
+            return []; // Return an empty array in case of error
+        }
+    }
 
-  // Fetch services and create paths
-  const services = await fetchServices();
+    // Fetch services and create paths
+    const services = await fetchServices();
 
-  // Ensure services is defined and not null
-  const paths = services.length > 0
-      ? services.map(service => ({
-          params: { service: service.name }
-      }))
-      : [];
+    // Ensure services is defined and not null
+    const paths = services.length > 0
+        ? services.map(service => ({
+            params: { service: service.name }
+        }))
+        : [];
 
-  return {
-      paths,
-      fallback: 'blocking', // or 'false' depending on your needs
-  };
+    return {
+        paths,
+        fallback: 'blocking', // or 'false' depending on your needs
+    };
 }
 
 export async function getStaticProps(context) {
-  const { params } = context;
-  const { service } = params;
+    const { params } = context;
+    const { service } = params;
 
-  try {
-      const serviceData = await fetch(wordpressGraphQlApiUrl, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-              query: `
+    try {
+        const serviceData = await fetch(wordpressGraphQlApiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                query: `
                   query Posts {
                       pages(where: {name: "${service}"}) {
                           nodes {
@@ -186,25 +165,32 @@ export async function getStaticProps(context) {
                       }
                   }
               `,
-          }),
-          cache: 'no-store'
-      });
+            }),
+            cache: 'no-store'
+        });
 
-      const servicePageData = await serviceData.json();
+        const servicePageData = await serviceData.json();
 
-      return {
-          props: {
-              servicePageData
-          },
-          revalidate: 10 // Enable Incremental Static Regeneration
-      };
-  } catch (error) {
-      console.error('Error fetching data:', error);
+        // Check if the servicePageData or pageData is null or undefined
+        const pageData = servicePageData?.data?.pages?.nodes[0] || null;
 
-      return {
-          props: {
-              servicePageData: null
-          },
-      };
-  }
+        if (!pageData) {
+            return {
+                notFound: true, // Trigger 404 page
+            };
+        }
+
+        return {
+            props: {
+                servicePageData
+            },
+            revalidate: 10 // Enable Incremental Static Regeneration
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+
+        return {
+            notFound: true, // Trigger 404 page on error
+        };
+    }
 }
