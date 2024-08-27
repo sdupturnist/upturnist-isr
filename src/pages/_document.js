@@ -11,7 +11,7 @@ export default function Document() {
     <Html lang="en">
          <Head>  
           {/* GTM Script */}
-          {/* <script
+          <script
             dangerouslySetInnerHTML={{
               __html: `
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -21,19 +21,19 @@ export default function Document() {
                 })(window,document,'script','dataLayer','${GTM_ID}');
               `,
             }}
-          /> */}
+          />
 
         </Head>
       <body>
           {/* GTM noscript fallback */}
-          {/* <noscript>
+          <noscript>
             <iframe
               src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
               height="0"
               width="0"
               style={{ display: 'none', visibility: 'hidden' }}
             />
-          </noscript> */}
+          </noscript>
         <Main />
         <NextScript />
       </body>
