@@ -23,7 +23,6 @@
         "react-animated-cursor": "^2.11.2",
         "react-day-picker": "^8.10.1",
         "react-dom": "^18",
-        "react-google-recaptcha": "^3.1.0",
         "react-number-format": "^5.4.0",
         "react-phone-number-input": "^3.4.3",
         "react-scroll-parallax": "^3.4.5",
