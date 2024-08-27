@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@apollo/client": "^3.10.8",
+        "@builder.io/partytown": "^0.10.2",
         "@gsap/react": "^2.1.1",
         "@heroicons/react": "^2.1.5",
         "animejs": "^3.2.2",

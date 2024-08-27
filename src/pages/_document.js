@@ -1,4 +1,6 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
+import { Partytown } from '@builder.io/partytown/react';
 
 export default function Document() {
 
@@ -11,7 +13,7 @@ export default function Document() {
     <Html lang="en">
          <Head>  
           {/* GTM Script */}
-          <script
+          <Script 
             dangerouslySetInnerHTML={{
               __html: `
                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -23,6 +25,20 @@ export default function Document() {
             }}
           />
 
+
+<script
+          data-partytown-config
+          dangerouslySetInnerHTML={{
+            __html: `
+              partytown = {
+                lib: "/_next/static/~partytown/",
+                debug: true
+              };
+            `,
+          }}
+        />
+
+        
         </Head>
       <body>
           {/* GTM noscript fallback */}
