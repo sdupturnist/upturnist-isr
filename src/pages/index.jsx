@@ -93,10 +93,10 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
   });
 
 
-  const HeroDescription = dynamic(() => import('../components/HeroDescription'), {
-    ///loading: () => <Loading />,
-    ssr: false,
-  });
+  // const HeroDescription = dynamic(() => import('../components/HeroDescription'), {
+  //   ///loading: () => <Loading />,
+  //   ssr: false,
+  // });
   return (
     <>
       <Metatags data={homePageData} />
@@ -110,9 +110,9 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
                 <AnimatedTextCharacter text={pageData.heroAnimatedHeading && pageData.heroAnimatedHeading} />
               </span>
               </h2>
-              <HeroDescription
-              data={pageData.heroDescription && pageData.heroDescription}
-              />
+              {/* <HeroDescription */}
+              {/* data={pageData.heroDescription && pageData.heroDescription} */}
+              {/* /> */}
                 <div className='mt-3'>
                 <button title="Let&apos;s start" aria-label="Let&apos;s start" className="btn" type="button" onClick={openHeroModal}>
                   Let&apos;s start
