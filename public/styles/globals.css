@@ -9113,6 +9113,7 @@ textarea.input {
 
 .content-p p {
   margin-bottom: 12px !important;
+  @apply sm:text-[1.3rem];
 }
 
 .landing-page a {
@@ -9356,17 +9357,37 @@ textarea.input {
   @apply text-lg leading-8 rounded-full p-10 flex items-center text-center hover:animate-pulse bg-opacity-50 backdrop-filter backdrop-blur-lg hover:bg-sky-800 transform hover:scale-105 duration-500 ease-in-out text-lg leading-8;
 }
 
-.testimonials {
-  @apply lg:py-10 py-6 relative;
+.testimonials, .faq-landingpage, .faq {
+  @apply sm:pb-[100px] pb-[30px] sm:pt-0 pt-[40px] relative;
 }
-.testimonials .container {
+.testimonials .container, .faq-landingpage .container, .faq .container {
   @apply z-10 relative sm:mb-16;
 }
-.testimonials h4 {
+.testimonials h4, .faq-landingpage h4, .faq h4 {
   @apply lg:text-[3.5rem] md:text-[3rem] sm:text-[2rem] text-[2rem] leading-tight;
 }
-.testimonials .inner {
+.testimonials .inner, .faq-landingpage .inner, .faq .inner {
   @apply border-t border-sky-700 sm:mt-12 sm:pt-12 mt-5 pt-5;
+}
+.testimonials br, .faq-landingpage br, .faq br {
+  display: none !important;
+}
+.testimonials .content p, .faq-landingpage .content p, .faq .content p {
+  margin: 0 !important;
+}
+
+.faq {
+  @apply sm:py-[100px] py-[20px];
+}
+.faq .inner {
+  border: 0 !important;
+}
+
+.faq-landingpage {
+  @apply sm:py-[50px] py-[20px] sm:pb-[50px] pb-[50px];
+}
+.faq-landingpage .inner {
+  border: 0 !important;
 }
 
 .footer {
@@ -10228,6 +10249,9 @@ textarea.input {
   margin-bottom: 20px;
   display: block;
 }
+.about-bottom-2 a {
+  color: #2fa4d8;
+}
 
 .video-js, video, .vjs-poster {
   background: transparent !important;
@@ -10236,4 +10260,9 @@ textarea.input {
 .video-js *, video *, .vjs-poster * {
   background: transparent !important;
   background-color: transparent !important;
+}
+
+.bg-faq {
+  background: rgba(21, 42, 55, 0.25);
+  border: solid thin rgba(255, 255, 255, 0.1019607843);
 }

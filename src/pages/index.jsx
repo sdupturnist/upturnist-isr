@@ -12,7 +12,8 @@ import AnimatedTextCharacter from "@/components/AnimatedText";
 import { useModalContext } from "@/context/modalContext";
 import dynamic from 'next/dynamic';
 import Loading from "@/components/Loading";
-import HeroDescription from "@/components/HeroDescription";
+import Accordion from "@/components/Accordion";
+
 
 
 export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, worksData, testimonialData }) {
@@ -75,25 +76,25 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
 
 
   const BlurAnimation = dynamic(() => import('../components/BlurAnimation'), {
-    loading: () => <Loading />,
+   // loading: () => <Loading />,
     ssr: false,
   });
 
 
   const ShapeAnimation = dynamic(() => import('../components/ShapeAnimation'), {
-    loading: () => <Loading />,
+    //loading: () => <Loading />,
     ssr: false,
   });
 
 
   const BackgroundAnimation = dynamic(() => import('../components/BackgroundAnimation'), {
-    loading: () => <Loading />,
+    //loading: () => <Loading />,
     ssr: false,
   });
 
 
   const HeroDescription = dynamic(() => import('../components/HeroDescription'), {
-    loading: () => <Loading />,
+    ///loading: () => <Loading />,
     ssr: false,
   });
   return (
@@ -120,28 +121,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
             </div>
           </div>
           <BackgroundAnimation />
-          {/* <video */}
-          {/* className="w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover" */}
-          {/* src={"/videos/hero.mp4"} */}
-          {/* poster="/images/hero.webp" */}
-          {/* muted */}
-          {/* autoPlay={"autoplay"} */}
-          {/* preload="none" */}
-          {/* loop> */}
-          {/* video tag is not supported by your browser */}
-          {/* </video> */}
-          {/* <Images */}
-          {/* imageurl={'/images/hero.webp'} */}
-          {/* styles={''} */}
-          {/* quality={100} */}
-          {/* width={'1500'} */}
-          {/* height={'1000'} */}
-          {/* alt={'SEO expert Dubai'} */}
-          {/* placeholder={true} */}
-          {/* classes={'frame-1 block w-full absolute left-0 right-0 top-0 bottom-0 h-screen opacity-10 grayscale object-cover'} */}
-          {/* /> */}
-
-        </section>
+           </section>
         <section className="about">
           <div className="container">
             <div className="wrpr">
@@ -350,6 +330,19 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
             </div>
           </div>
         </section>
+        <section className="faq text-center">
+          <div className="container">
+            <div>
+              <div className="lg:basis-[100%]">
+                <h4 data-aos="fade-up">{pageData && pageData.faqHeading}​</h4>
+              </div>
+              <div className="inner" data-aos="fade-up">
+                {pageData && <Accordion data={pageData && pageData.faq} />}
+              </div>
+            </div>
+          </div>
+          <BlurAnimation position="bottom right" />
+        </section>
         <section className="testimonials text-center">
           <div className="container">
             <div>
@@ -431,6 +424,8 @@ focuskw
         seoVisibilityReportHeading2
         seoVisibilityReportHeadingCtaLabel
         seoVisibilityReportHeadingDescription
+        faqHeading
+        faq
         seoVisibilityReportImage {
           node {
             altText

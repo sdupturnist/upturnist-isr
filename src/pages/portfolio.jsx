@@ -11,7 +11,7 @@ export default function Works({ worksPageData, worksDatas }) {
 
   const pageData = worksPageData.data.pages.nodes[0]
 
-  console.log(worksDatas)
+
 
   return (
     <>

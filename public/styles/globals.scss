@@ -8985,6 +8985,8 @@ textarea.input {
         p {
                 margin-bottom: 12px !important;
                 ;
+
+                @apply sm:text-[1.3rem]
         }
 }
 
@@ -9330,7 +9332,7 @@ textarea.input {
     
     
     .testimonials {
-        @apply lg:py-10 py-6 relative;
+        @apply sm:pb-[100px] pb-[30px] sm:pt-0 pt-[40px] relative;
     
         .container {
             @apply z-10 relative sm:mb-16;
@@ -9344,7 +9346,38 @@ textarea.input {
     
             @apply border-t border-sky-700 sm:mt-12 sm:pt-12 mt-5 pt-5;
         }
+
+        br{
+                display:none !important;
+        }
+
+     .content{
+        p{
+                margin: 0 !important;
+        }
+     }
     
+    }
+
+    .faq{
+        @extend .testimonials;
+        .inner{
+                border:0 !important;
+        }
+
+        @apply sm:py-[100px] py-[20px]
+
+    }
+
+    .faq-landingpage{
+         
+           @extend .testimonials;
+        .inner{
+                border:0 !important;
+        }
+
+        @apply sm:py-[50px] py-[20px] sm:pb-[50px] pb-[50px]
+
     }
     
     
@@ -10672,7 +10705,37 @@ textarea.input {
                 margin-bottom: 20px;
                 display:block;
         }
+        a{
+                color: $SC;
+        }
  }
+
+
+//  .faqContainer {
+//   margin: 0 auto;
+//   max-width: 600px;
+//   padding: 20px;
+// }
+
+// .faqItem {
+//   margin-bottom: 10px;
+// }
+
+// .faqQuestion {
+//   background-color: #f0f0f0;
+//   border: none;
+//   padding: 10px;
+//   width: 100%;
+//   text-align: left;
+//   cursor: pointer;
+//   font-size: 16px;
+// }
+
+// .faqAnswer {
+//   background-color: #fafafa;
+//   padding: 10px;
+//   border-left: 3px solid #0070f3;
+// }
 
 
 
@@ -10710,3 +10773,8 @@ textarea.input {
 // filter: grayscale(1);
            
 // }
+
+.bg-faq{
+        background: rgb(21, 42, 55, 25%);
+        border: solid thin #ffffff1a;
+}

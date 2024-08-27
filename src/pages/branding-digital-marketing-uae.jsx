@@ -15,6 +15,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { useRef } from "react";
 import LocationMap from "@/components/GoogleMap";
+import Accordion from "@/components/Accordion";
 
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -493,6 +494,19 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
               </div>
             </div>
           </section>
+          <section className="faq-landingpage text-center">
+          <div className="container">
+            <div>
+              <div className="lg:basis-[100%]">
+                <h4 data-aos="fade-up">{pageData && pageData.landingPage1.faqHeading}​</h4>
+              </div>
+              <div className="inner" data-aos="fade-up">
+                {pageData && <Accordion data={pageData && pageData.landingPage1.faq} />}
+              </div>
+            </div>
+          </div>
+          <BlurAnimation position="bottom right" />
+        </section>
           <section className="relative overflow-hidden">
          <LocationMap/>
         </section>
@@ -566,6 +580,8 @@ export async function getStaticProps(context) {
         testimonialHeading
         aboutBottom2Heading
         aboutBottom2Content
+        faqHeading
+        faq
       }
       seo {
         canonical
