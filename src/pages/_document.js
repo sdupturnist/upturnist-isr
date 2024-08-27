@@ -8,6 +8,7 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>  
+      <Partytown debug={true} forward={['dataLayer.push']} />
         {/* GTM Script */}
         <Script 
           id="gtm-script"
@@ -25,21 +26,9 @@ export default function Document() {
               })(window,document,'script','dataLayer','${GTM_ID}');
             `,
           }}
+          type="text/partytown"
         />
-
-        <Script
-          id="partytown-config"
-          data-partytown-config
-          dangerouslySetInnerHTML={{
-            __html: `
-              partytown = {
-                lib: "/_next/static/~partytown/",
-                debug: true
-              };
-            `,
-          }}
-        />
-      </Head>
+   </Head>
       <body>
         {/* GTM noscript fallback */}
         <noscript>
