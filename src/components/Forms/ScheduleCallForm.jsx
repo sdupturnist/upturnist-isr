@@ -6,7 +6,6 @@ import { format, differenceInCalendarDays, isWeekend } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { useRouter } from 'next/navigation'
-import ReCAPTCHA from 'react-google-recaptcha';
 import { useModalContext } from "@/context/modalContext";
 
 
