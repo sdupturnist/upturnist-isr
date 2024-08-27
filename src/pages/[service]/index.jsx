@@ -1,4 +1,4 @@
-import { frontendUrl, wordpressGraphQlApiUrl } from "@/utils/variables";
+import { wordpressGraphQlApiUrl } from "@/utils/variables";
 import Layout from "@/components/Layout";
 import { AOSInit } from '@/components/Aos';
 import BlurAnimation from '@/components/BlurAnimation';
@@ -6,11 +6,17 @@ import EnquiryService from "@/components/EnquiryService";
 import MetatagsServiceSingle from "@/components/SeoServiceSingle";
 import AnimatedTextCharacter from "@/components/AnimatedText";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
+import Accordion from "@/components/Accordion";
+
+
 
 export default function Service({ servicePageData }) {
+
+
+
     // Check if servicePageData is null
     if (!servicePageData) {
-        return null; 
+        return null;
     }
 
     const pageData = servicePageData.data.pages.nodes[0];
@@ -18,7 +24,7 @@ export default function Service({ servicePageData }) {
     // Check if pageData is undefined or null
     if (!pageData) {
         // Redirect to 404 page
-        return <p>Page not found</p>; 
+        return <p>Page not found</p>;
     }
 
     return (
@@ -53,12 +59,25 @@ export default function Service({ servicePageData }) {
                             <div className="wrpr-1">
                                 <div className="wrpr-2">
                                     <div data-aos="fade-up" className="blog-content" dangerouslySetInnerHTML={{ __html: pageData.content }} />
+                                    {pageData?.pages?.faqCommon && <div>
+                                        <div className="grid sm:gap-[50px] gap-[30px]">
+                                            <div className="lg:basis-[100%]">
+                                                <h4 className="lg:text-[3rem] md:text-[2.5rem] sm:text-[2rem] text-[2rem] leading-tight" data-aos="fade-up">{pageData && pageData?.pages?.faqheadingcommon}​</h4>
+                                            </div>
+                                            <div className="inner" data-aos="fade-up">
+                                                {pageData && <Accordion data={pageData && pageData?.pages?.faqCommon} />}
+                                            </div>
+                                        </div>
+                                        <BlurAnimation position="bottom right" />
+                                    </div>}
                                     <EnquiryService />
                                 </div>
                             </div>
+
                         </div>
                         <BlurAnimation position="top right" />
                     </section>
+
                 </div>
             </Layout>
         </>
@@ -130,6 +149,8 @@ export async function getStaticProps(context) {
                               content
                               pages {
                                   subHeading
+                                    faqheadingcommon
+                                faqCommon
                               }
                               featuredImage {
                                   node {
