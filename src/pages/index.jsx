@@ -129,10 +129,10 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
           <div className="container">
             <div className="wrpr">
               <div className="col-left">
-                <h2 className="col-right" data-aos="fade-up">{pageData.aboutHeading && pageData.aboutHeading}</h2>
+                <h2 className="col-right">{pageData.aboutHeading && pageData.aboutHeading}</h2>
               </div>
               <div className="lg:basis-[50%]">
-                <p data-aos="fade-up">{pageData.aboutDescription && pageData.aboutDescription}</p>
+                <p >{pageData.aboutDescription && pageData.aboutDescription}</p>
               </div>
             </div>
           </div>
