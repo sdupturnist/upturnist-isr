@@ -11,7 +11,6 @@ import ScheduleCallForm from "./Forms/ScheduleCallForm";
 import ScrollToTopPage from "./ScrollToTopPage";
 import QuickContactForm from "./Forms/QuickEnquiryForm";
 import PackageBookingForm from "./Forms/PackageBookingForm";
-import { useThemeContext } from "@/context/themeContext";
 import Link from "next/link";
 
 
@@ -19,7 +18,7 @@ import Link from "next/link";
 export default function Layout({ children, type }) {
 
   const { showModal, setShowModal, setModalData, modalData, modalFor, setIsClassAdded } = useModalContext()
-  const { theme } = useThemeContext();
+ 
   //console.log(modalData[0])
 
 
