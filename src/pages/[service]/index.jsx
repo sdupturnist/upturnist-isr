@@ -60,7 +60,7 @@ export default function Service({ servicePageData }) {
                                 <div className="wrpr-2">
                                     <div data-aos="fade-up" className="blog-content" dangerouslySetInnerHTML={{ __html: pageData.content }} />
                                     {pageData?.pages?.faqCommon && <div>
-                                        <div className="grid sm:gap-[50px] gap-[30px]">
+                                        <div className="md:pt-[30px] grid sm:gap-[50px] gap-[30px]">
                                             <div className="lg:basis-[100%]">
                                                 <h4 className="lg:text-[3rem] md:text-[2.5rem] sm:text-[2rem] text-[2rem] leading-tight" data-aos="fade-up">{pageData && pageData?.pages?.faqheadingcommon}​</h4>
                                             </div>
