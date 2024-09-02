@@ -49,7 +49,7 @@ function generateSiteMap(pages, blogs) {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
-       <loc>${baseUrl}</loc>
+       <loc>${baseUrl}/</loc>
      </url>
  
      ${filteredContent
@@ -58,7 +58,7 @@ function generateSiteMap(pages, blogs) {
         const fullUrl = `${baseUrl}${uri}`.replace(/\/$/, '');
         return `
            <url>
-             <loc>${fullUrl}</loc>
+             <loc>${fullUrl}/</loc>
            </url>
          `;
       })
