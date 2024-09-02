@@ -17,16 +17,22 @@ const nextConfig = {
   async redirects() {
     return [
       // {
-      //   source: '/',
-      //   has: [
-      //     {
-      //       type: 'host',
-      //       value: 'upturnist.com',
-      //     },
-      //   ],
-      //   destination: 'https://www.upturnist.com',
+      //   source: '/:path*',
+      //   destination: 'https://upturnist.com/:path*',
       //   permanent: true,
+      //   basePath: false, // Ensures that basePath is not considered
       // },
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.upturnist.com',
+          },
+        ],
+        destination: 'https://upturnist.com/:path*',
+        permanent: true,
+      },
      {
         source: '/our-works/',
         destination: '/portfolio/',
