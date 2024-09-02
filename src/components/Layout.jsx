@@ -12,6 +12,7 @@ import ScrollToTopPage from "./ScrollToTopPage";
 import QuickContactForm from "./Forms/QuickEnquiryForm";
 import PackageBookingForm from "./Forms/PackageBookingForm";
 import Link from "next/link";
+import { useEffect } from "react";
 
 
 
@@ -20,6 +21,25 @@ export default function Layout({ children, type }) {
   const { showModal, setShowModal, setModalData, modalData, modalFor, setIsClassAdded } = useModalContext()
  
   //console.log(modalData[0])
+
+
+  useEffect(() => {
+    // Select all links in the component
+    const links = document.querySelectorAll('a');
+
+    links.forEach(link => {
+      const linkText = link.textContent.trim();
+
+      // Set title and aria-label attributes
+      if (linkText) {
+        link.setAttribute('title', `Go to ${linkText}`);
+        link.setAttribute('aria-label', `Navigate to ${linkText}`);
+      }
+    });
+  }, []); // Empty dependency array means this effect runs once after the initial render
+
+
+
 
 
   const closeModal = () => {

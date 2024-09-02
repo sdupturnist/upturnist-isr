@@ -1,76 +1,66 @@
 import { frontendUrl, wordpressUrl } from "@/utils/variables";
-const EXTERNAL_DATA_URL = `${wordpressUrl}/wp-json/wp/v2/blogs`
+const GRAPHQL_QUERY_URL = `${wordpressUrl}/graphql`;
 
+// Updated GraphQL query to fetch both pages and blogs
+const GRAPHQL_QUERY = `
+  query SiteContent {
+    pages(first: 500) {
+      nodes {
+        uri
+      }
+    }
+    allBlogs(first: 500) {
+      nodes {
+        slug
+      }
+    }
+  }
+`;
 
-function generateSiteMap(posts) {
+// List of URLs to exclude
+const EXCLUDED_URLS = [
+  `${frontendUrl}thankyou-schedule-appointment-with-basheer/`,
+  `${frontendUrl}schedule-appointment-with-basheer/`,
+  `${frontendUrl}thank-you-schedule-call/`,
+  `${frontendUrl}thank-you/`,
+  `${frontendUrl}home/`,
+].map(url => url.replace(/\/$/, '')); // Remove trailing slashes for comparison
+
+// Function to generate the sitemap XML
+function generateSiteMap(pages, blogs) {
+  // Ensure frontendUrl does not end with a slash
+  const baseUrl = frontendUrl.endsWith('/') ? frontendUrl.slice(0, -1) : frontendUrl;
+
+  // Map blog slugs to URIs
+  const blogPages = blogs.map(({ slug }) => ({
+    uri: `/blogs/${slug}/`
+  }));
+
+  // Combine pages and blog pages
+  const allContent = [...pages, ...blogPages];
+
+  // Filter out excluded URLs
+  const filteredContent = allContent.filter(({ uri }) => {
+    // Construct full URL for each page or blog
+    const fullUrl = `${baseUrl}${uri}`.replace(/\/$/, ''); // Normalize URL by removing trailing slash
+    return !EXCLUDED_URLS.includes(fullUrl);
+  });
+
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
      <url>
-     <loc>${frontendUrl}</loc>
-   </url>
-
-
-   <url>
-       <loc>${frontendUrl}app-development/</loc>
+       <loc>${baseUrl}</loc>
      </url>
-     <url>
-     <loc>${frontendUrl}brand-collateral/</loc>
-   </url>
-   <url>
-   <loc>${frontendUrl}branding-consulting/</loc>
- </url>
- <url>
- <loc>${frontendUrl}brand-themes/</loc>
-  </url>
-     <url>
-  <loc>${frontendUrl}contact/</loc>
-   </url>
-     <url>
-   <loc>${frontendUrl}content-marketing/</loc>
-    </url>
-     <url>
-    <loc>${frontendUrl}e-commerce-websites-development/</loc>
-     </url>
-     <url>
-     <loc>${frontendUrl}email-marketing-dubai/</loc>
-      </url>
-     <url>
-      <loc>${frontendUrl}logo-design/</loc>
-       </url>
-     <url>
-       <loc>${frontendUrl}packages/</loc>
-        </url>
-     <url>
-        <loc>${frontendUrl}portfolio/</loc>
-         </url>
-     <url>
-         <loc>${frontendUrl}search-engine-marketing/</loc>
-          </url>
-     <url>
-          <loc>${frontendUrl}best-seo-company-dubai/</loc>
-           </url>
-     <url>
-           <loc>${frontendUrl}social-media-management-dubai/</loc>
-            </url>
-     <url>
-            <loc>${frontendUrl}blogs/</loc>
-             </url>
-     <url>
-             <loc>${frontendUrl}web-design-agency-dubai/</loc>
-              </url>
-     <url>
-             <loc>${frontendUrl}about/</loc>
-</url>
- <url>
-             <loc>${frontendUrl}branding-digital-marketing-uae/</loc>
-</url>
-    ${posts
-      .map(({ link }) => {
+ 
+     ${filteredContent
+      .map(({ uri }) => {
+        // Construct the full URL for each page or blog
+        const fullUrl = `${baseUrl}${uri}`.replace(/\/$/, '');
         return `
-       <url>
-           <loc>${`${frontendUrl}${link.substring(link.indexOf("blogs")).slice(0, -1)}`}/</loc>
-       </url>
-     `;
+           <url>
+             <loc>${fullUrl}</loc>
+           </url>
+         `;
       })
       .join('')}
    </urlset>
@@ -78,19 +68,27 @@ function generateSiteMap(posts) {
 }
 
 function SiteMap() {
-  // getServerSideProps will do the heavy lifting
+  // getServerSideProps will handle the server-side logic
 }
 
 export async function getServerSideProps({ res }) {
-  // We make an API call to gather the URLs for our site
-  const request = await fetch(EXTERNAL_DATA_URL);
-  const posts = await request.json();
+  // Fetch the GraphQL data
+  const response = await fetch(GRAPHQL_QUERY_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query: GRAPHQL_QUERY }),
+  });
 
-  // We generate the XML sitemap with the posts data
-  const sitemap = generateSiteMap(posts);
+  const { data } = await response.json();
+  const pages = data.pages.nodes;
+  const blogs = data.allBlogs.nodes;
+
+  // Generate the XML sitemap with the filtered pages and blog data
+  const sitemap = generateSiteMap(pages, blogs);
 
   res.setHeader('Content-Type', 'text/xml');
-  // we send the XML to the browser
   res.write(sitemap);
   res.end();
 

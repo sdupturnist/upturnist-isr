@@ -7,7 +7,7 @@
         "build": "npm run partytown && next build",
         "start": "node server.js",
         "lint": "next lint",
-         "partytown": "partytown copylib public/~partytown"
+        "partytown": "partytown copylib public/~partytown"
     },
     "dependencies": {
         "@apollo/client": "^3.10.8",

@@ -29,26 +29,26 @@ export default function Service({ servicePageData }) {
 
     return (
         <>
-            <MetatagsServiceSingle data={servicePageData} />
+            <MetatagsServiceSingle data={servicePageData && servicePageData} />
             <Layout>
                 <AOSInit />
                 <div className="service-single">
                     <section
                         style={{
                             marginTop: '-120px',
-                            backgroundImage: `linear-gradient(rgba(0, 26, 42, 0.9), rgba(0, 26, 42, 0.9)), url(${pageData.featuredImage.node.sourceUrl})`,
+                            backgroundImage: `linear-gradient(rgba(0, 26, 42, 0.9), rgba(0, 26, 42, 0.9)), url(${pageData.featuredImage && pageData.featuredImage.node.sourceUrl})`,
                             backgroundSize: 'cover',
                         }}
                         className="hero lg:h-screen h-[80vh] flex items-center sm:py-20 pt-[100px] pb-[24px] py-6 overflow-hidden relative text-center">
                         <div className="container z-10 relative">
                             <div className="grid gap-8">
                                 <div className="items-center grid gap-7 sm:order-1 order-2">
-                                    <h1 className="lg:text-[5rem] md:text-[4rem] sm:text-[3rem] text-[2rem] leading-tight" data-aos="fade-up">
+                                    <h1 className="lg:text-[4rem] md:text-[3.5rem] sm:text-[3rem] text-[2rem] leading-tight" data-aos="fade-up">
                                         <AnimatedTextCharacter text={pageData.title} />
                                     </h1>
-                                    <p className="md:text-[1.6rem] text-[1rem]" data-aos="fade-up" data-delay="500">
+                                    {pageData.pages.subHeading && <p className="md:text-[1.6rem] text-[1rem]" data-aos="fade-up" data-delay="500">
                                         {pageData.pages.subHeading}
-                                    </p>
+                                    </p>}
                                 </div>
                             </div>
                         </div>

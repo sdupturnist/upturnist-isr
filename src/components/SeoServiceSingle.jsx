@@ -23,7 +23,7 @@ export default function MetatagsServiceSingle({ data }) {
                 <>
 
 
-                <title>{seo?.title && seo?.title}</title>
+                <title>{seo && seo?.title}</title>
 
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -31,8 +31,8 @@ export default function MetatagsServiceSingle({ data }) {
                     <link rel="manifest" href="/site.webmanifest" />
                     <meta name="msapplication-TileColor" content="#da532c" />
                     <meta name="theme-color" content="#ffffff" />
-                    <meta name="description" content={seo?.metaDesc && seo?.metaDesc} />
-                    <meta name="keywords" content={seo?.focuskw && seo?.focuskw} />
+                    <meta name="description" content={seo && seo?.metaDesc} />
+                    <meta name="keywords" content={seo && seo?.focuskw} />
                     <link rel="canonical" href={(frontendUrl + currentPath + '/')
     .replace(/([^:]\/)\/+/g, "$1") // Remove duplicate slashes
     .replace(/index\/?/g, "") // Remove "index" and optional trailing slash
@@ -40,12 +40,12 @@ export default function MetatagsServiceSingle({ data }) {
                     <meta name="robots" content="index, follow" />
                     <meta property="og:locale" content="en_US" />
                     <meta property="og:type" content="website" />
-                    <meta property="og:title" content={seo?.title && seo?.title} />
-                    <meta property="og:description" content={seo?.opengraphDescription && seo?.opengraphDescription} />
+                    <meta property="og:title" content={seo && seo?.title} />
+                    <meta property="og:description" content={seo && seo?.opengraphDescription} />
                     <meta property="og:url" content={(frontendUrl + currentPath + '/').replace(/([^:]\/)\/+/g, "$1")} />
-                    <meta property="og:site_name" content={seo?.opengraphSiteName && seo?.opengraphSiteName} />
-                    <meta property="article:modified_time" content={seo?.opengraphModifiedTime && seo?.opengraphModifiedTime} />
-                    <meta property="og:image" content={seo?.opengraphImage.sourceUrl && seo?.opengraphImage.sourceUrl} />
+                    <meta property="og:site_name" content={seo && seo?.opengraphSiteName} />
+                    <meta property="article:modified_time" content={seo && seo?.opengraphModifiedTime} />
+                    <meta property="og:image" content={seo && seo?.opengraphImage?.sourceUrl} />
                     <meta property="og:image:width" content="479" />
                     <meta property="og:image:height" content="482" />
                     <meta property="og:image:type" content="image/webp" />

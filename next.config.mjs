@@ -2,49 +2,45 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-   poweredByHeader: false,
+  poweredByHeader: false,
   images: {
-      domains: [
-        'admin.upturnist.com',
-        'localhost',
-        'upturnist.com',
-        'greenenergyfarm.in',
-        'mir-s3-cdn-cf.behance.net'
-      ], 
-    },
+    domains: [
+      'admin.upturnist.com',
+      'localhost',
+      'upturnist.com',
+    ],
+  },
 
 
-    async redirects() {
-      return [
-        {
-          source: '/our-works/',
-          destination: '/portfolio/',
-          permanent: true,
-        },
-        {
-          source: '/our-packages/',
-          destination: '/packages/',
-          permanent: true,
-        },
-        {
-          source: '/blogs/ultimate-guide-standout-branding-in-dubai/',
-          destination: '/blogs/ultimate-guide-standout-branding-dubai/',
-          permanent: true,
-        },
-        {
-          source: '/blogs/how-ai-generated-content-play-in-seo/',
-          destination: '/blogs/ai-generated-content-play-seo/',
-          permanent: true,
-        },
-        {
-          source: '/e-commerce-website/',
-          destination: '/e-commerce-websites-development/',
-          permanent: true,
-        },
-      ]
-    },
 
-    
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: 'upturnist.com',
+          },
+        ],
+        destination: 'https://www.upturnist.com',
+        permanent: true,
+      },
+     {
+        source: '/our-works/',
+        destination: '/portfolio/',
+        permanent: true,
+      },
+      {
+        source: '/e-commerce-website/',
+        destination: '/e-commerce-websites-development/',
+        permanent: true,
+      },
+    ]
+  },
+
+
 };
 
 export default nextConfig;
