@@ -76,7 +76,7 @@ export default function Footer({ initialData }) {
                   </ul>
                 </div>
                 <div>
-                  <span className="heading ">BRANDING</span>
+                  <Link title="BRANDING" aria-label="BRANDING" href="/branding-uae/" className="link-hover heading">BRANDING</Link>
                   <ul className="list-wrpr">
                     <li><Link title="Brand Themes" aria-label="Brand Themes" href="/brand-themes" className="link-hover">Brand Themes</Link></li>
                     <li><Link title="Logo Design" aria-label="Logo Design" href="/logo-design" className="link-hover">Logo Design</Link></li>
