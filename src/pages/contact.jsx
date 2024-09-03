@@ -130,6 +130,9 @@ export async function getStaticProps(context) {
              pages{
                 subHeading
               }
+                   seoKeywords{
+          seoKeywords
+        }
                 seo {
                  canonical
 focuskw

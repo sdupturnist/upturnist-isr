@@ -57,6 +57,9 @@ export async function getStaticProps(context) {
              pages{
                 subHeading
               }
+                   seoKeywords{
+          seoKeywords
+        }
             featuredImage{
             node{
               altText

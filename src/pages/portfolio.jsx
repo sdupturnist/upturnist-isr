@@ -57,6 +57,9 @@ export async function getStaticProps(context) {
                     subHeading
                   additionalDescription
                   }
+                     seoKeywords{
+          seoKeywords
+        }
                 
                     seo {
                       canonical

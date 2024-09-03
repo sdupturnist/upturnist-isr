@@ -152,6 +152,9 @@ export async function getStaticProps(context) {
                                     faqheadingcommon
                                 faqCommon
                               }
+                                   seoKeywords{
+          seoKeywords
+        }
                               featuredImage {
                                   node {
                                       altText

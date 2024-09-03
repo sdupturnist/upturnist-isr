@@ -17,6 +17,7 @@ const SEARCH_PAGES = gql`
         title
         slug
       }
+        
     }
     allBlogs(first: 100, where: { search: $searchTerm }) {
       nodes {

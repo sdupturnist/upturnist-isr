@@ -5,11 +5,11 @@ import { useRouter } from 'next/router';
 
 export default function MetatagsBlogSingle({ data }) {
 
- 
+
     const seo = data[0]?.data?.allBlogs?.nodes[0]?.seo
-   
-   
-  //console.log(seo?.opengraphImage.sourceUrl)
+    const keyWords = data?.data?.pages?.nodes[0].seoKeywords?.seoKeywords
+
+    //console.log(seo?.opengraphImage.sourceUrl)
 
 
     const router = useRouter();
@@ -24,21 +24,21 @@ export default function MetatagsBlogSingle({ data }) {
                 <>
 
 
-                <title>{seo?.title}</title>
+                    <title>{seo?.title}</title>
 
 
-                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
                     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
                     <link rel="manifest" href="/site.webmanifest" />
                     <meta name="msapplication-TileColor" content="#da532c" />
                     <meta name="theme-color" content="#ffffff" />
-                      <meta name="description" content={seo?.metaDesc && seo?.metaDesc} />
-                    <meta name="keywords" content={seo?.focuskw && seo?.focuskw} />
+                    <meta name="description" content={seo?.metaDesc && seo?.metaDesc} />
+                    {keyWords && <meta name="keywords" content={keyWords && keyWords} />}
                     <link rel="canonical" href={(frontendUrl + currentPath + '/')
-    .replace(/([^:]\/)\/+/g, "$1") // Remove duplicate slashes
-    .replace(/index\/?/g, "") // Remove "index" and optional trailing slash
-} />
+                        .replace(/([^:]\/)\/+/g, "$1") // Remove duplicate slashes
+                        .replace(/index\/?/g, "") // Remove "index" and optional trailing slash
+                    } />
                     <meta name="robots" content="index, follow" />
                     <meta property="og:locale" content="en_US" />
                     <meta property="og:type" content="website" />

@@ -4,9 +4,9 @@ import { useRouter } from 'next/router';
 
 export default function Metatags({ data }) {
 
- 
-    const seo = data?.data?.pages?.nodes[0]?.seo
 
+    const seo = data?.data?.pages?.nodes[0]?.seo
+    const keyWords = data?.data?.pages?.nodes[0].seoKeywords?.seoKeywords
 
     const router = useRouter();
 
@@ -27,11 +27,11 @@ export default function Metatags({ data }) {
                     <meta name="msapplication-TileColor" content="#da532c" />
                     <meta name="theme-color" content="#ffffff" />
                     <meta name="description" content={seo?.metaDesc && seo?.metaDesc} />
-                    <meta name="keywords" content={seo?.focuskw && seo?.focuskw} />
+                    {keyWords && <meta name="keywords" content={keyWords && keyWords} />}
                     <link rel="canonical" href={(frontendUrl + currentPath + '/')
-    .replace(/([^:]\/)\/+/g, "$1") // Remove duplicate slashes
-    .replace(/index\/?/g, "") // Remove "index" and optional trailing slash
-} />
+                        .replace(/([^:]\/)\/+/g, "$1") // Remove duplicate slashes
+                        .replace(/index\/?/g, "") // Remove "index" and optional trailing slash
+                    } />
                     <meta name="robots" content="index, follow" />
                     <meta property="og:locale" content="en_US" />
                     <meta property="og:type" content="website" />

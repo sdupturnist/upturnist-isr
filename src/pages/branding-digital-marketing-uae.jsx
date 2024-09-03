@@ -540,6 +540,9 @@ export async function getStaticProps(context) {
           altText
         }
       }
+           seoKeywords{
+          seoKeywords
+        }
       landingPage1 {
         seoBackgound {
           node {

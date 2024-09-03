@@ -121,6 +121,9 @@ export async function getStaticProps(context) {
                   sourceUrl
                 }
               }
+                   seoKeywords{
+          seoKeywords
+        }
               seo {
                 canonical
                 focuskw
@@ -168,6 +171,9 @@ export async function getStaticProps(context) {
                   sourceUrl
                 }
               }
+                   seoKeywords{
+          seoKeywords
+        }
               seo {
                 canonical
                 opengraphSiteName
@@ -210,6 +216,9 @@ export async function getStaticProps(context) {
               title
               content
               slug
+                 seoKeywords{
+          seoKeywords
+        }
               featuredImage {
                 node {
                   sourceUrl

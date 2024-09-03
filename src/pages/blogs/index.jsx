@@ -13,78 +13,81 @@ const { htmlToText } = require('html-to-text');
 export default function Blogs({ blogPageDatas, getAllBlogsData }) {
 
 
-    const pageData = blogPageDatas.data.pages.nodes[0]
-    const allBlogs = getAllBlogsData.data.allBlogs.nodes
-
-
- 
-    const cleanHTML = (htmlString) => {
-        return htmlToText(htmlString, {
-          wordwrap: false,
-        });
-      };
-
-    return (
-        <>
-            <Metatags data={blogPageDatas} />
-            <Layout>
-                <AOSInit />
-                <PageHeading heading={pageData.title && pageData.title} subHeading={pageData.pages.subHeading && pageData.pages.subHeading} />
-                <section className="all-blogs">
-                    <div className="container">
-                        <div className="inner">
-                            <div className="wrpr">
-                                {allBlogs && allBlogs.map((blog, key) => {
+  const pageData = blogPageDatas.data.pages.nodes[0]
+  const allBlogs = getAllBlogsData.data.allBlogs.nodes
 
 
 
-                                    return (<Link className="w-full" title={`Read blog: ${blog.title}`} href={`${frontendUrl}/blogs/${blog.slug}/`}  key={key}>
-                                        {blog.featuredImage && <Images
-                                            imageurl={blog.featuredImage.node.sourceUrl}
-                                            styles={''}
-                                            quality={100}
-                                            width={'500'}
-                                            height={'500'}
-                                            alt={blog.featuredImage.node.altText}
-                                            placeholder={true}
-                                            classes={'rounded-3xl w-full block transform hover:scale-105 duration-500 ease-in-out filter grayscale opacity-50 hover:opacity-80 hover:grayscale-0'}
-                                        />
-                                        }
-                                        <h2>{blog.title}</h2>
-                                      <div className="overflow-hidden">
-                                      <p className="w-[100%] block"><TruncatedText text={blog && cleanHTML(blog.content)} maxLength={400} /></p> 
-                                      </div>
-                                      </Link>)
-                                })}
-                            </div>
-                        </div>
+  const cleanHTML = (htmlString) => {
+    return htmlToText(htmlString, {
+      wordwrap: false,
+    });
+  };
+
+  return (
+    <>
+      <Metatags data={blogPageDatas} />
+      <Layout>
+        <AOSInit />
+        <PageHeading heading={pageData.title && pageData.title} subHeading={pageData.pages.subHeading && pageData.pages.subHeading} />
+        <section className="all-blogs">
+          <div className="container">
+            <div className="inner">
+              <div className="wrpr">
+                {allBlogs && allBlogs.map((blog, key) => {
+
+
+
+                  return (<Link className="w-full" title={`Read blog: ${blog.title}`} href={`${frontendUrl}/blogs/${blog.slug}/`} key={key}>
+                    {blog.featuredImage && <Images
+                      imageurl={blog.featuredImage.node.sourceUrl}
+                      styles={''}
+                      quality={100}
+                      width={'500'}
+                      height={'500'}
+                      alt={blog.featuredImage.node.altText}
+                      placeholder={true}
+                      classes={'rounded-3xl w-full block transform hover:scale-105 duration-500 ease-in-out filter grayscale opacity-50 hover:opacity-80 hover:grayscale-0'}
+                    />
+                    }
+                    <h2>{blog.title}</h2>
+                    <div className="overflow-hidden">
+                      <p className="w-[100%] block"><TruncatedText text={blog && cleanHTML(blog.content)} maxLength={400} /></p>
                     </div>
-                    <BlurAnimation position="top right" />
-                </section>
-            </Layout>
-        </>
-    );
+                  </Link>)
+                })}
+              </div>
+            </div>
+          </div>
+          <BlurAnimation position="top right" />
+        </section>
+      </Layout>
+    </>
+  );
 }
 
 export async function getStaticProps(context) {
 
-    try {
+  try {
 
-        //BLOG PAGE DATA
-        const blogPageData = await fetch(
-            wordpressGraphQlApiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                query: ` query Posts {
+    //BLOG PAGE DATA
+    const blogPageData = await fetch(
+      wordpressGraphQlApiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: ` query Posts {
             pages(where: {id:839}) {
               nodes{
                 title
                  pages{
                     subHeading
                   }
+                     seoKeywords{
+          seoKeywords
+        }
                     seo {
                     canonical
 focuskw
@@ -113,27 +116,27 @@ opengraphSiteName
       }
       }
           `,
-            }),
-            next: { revalidate: 10 },
-        },
-            {
-                cache: 'force-cache',
-                cache: 'no-store'
-            }
-        );
-        const blogPageDatas = await blogPageData.json();
+      }),
+      next: { revalidate: 10 },
+    },
+      {
+        cache: 'force-cache',
+        cache: 'no-store'
+      }
+    );
+    const blogPageDatas = await blogPageData.json();
 
 
 
-        //BLOG PAGE DATA
-        const blogsData = await fetch(
-            wordpressGraphQlApiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                query: ` query Posts {
+    //BLOG PAGE DATA
+    const blogsData = await fetch(
+      wordpressGraphQlApiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: ` query Posts {
            allBlogs( first: 100 where: {orderby: {order: DESC, field: DATE}}){
               nodes{
                 title
@@ -150,31 +153,31 @@ opengraphSiteName
           }
     
             `,
-            }),
-            next: { revalidate: 10 },
-        },
-            {
-                cache: 'force-cache',
-                cache: 'no-store'
-            }
-        );
-        const getAllBlogsData = await blogsData.json();
-
-        return {
-            props: {
-                blogPageDatas,
-                getAllBlogsData
-            },
-            revalidate: 10, // ISR: Revalidate every 10 seconds
-          };
-        } catch (error) {
-          console.error('Error fetching data:', error);
-       return {
-            props: {
-                blogPageDatas:{},
-                getAllBlogsData:{}
-            },
-            revalidate: 10, // ISR: Still set a revalidate time even on error
-          };
-        }
+      }),
+      next: { revalidate: 10 },
+    },
+      {
+        cache: 'force-cache',
+        cache: 'no-store'
       }
+    );
+    const getAllBlogsData = await blogsData.json();
+
+    return {
+      props: {
+        blogPageDatas,
+        getAllBlogsData
+      },
+      revalidate: 10, // ISR: Revalidate every 10 seconds
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        blogPageDatas: {},
+        getAllBlogsData: {}
+      },
+      revalidate: 10, // ISR: Still set a revalidate time even on error
+    };
+  }
+}
