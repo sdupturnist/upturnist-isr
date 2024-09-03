@@ -24,6 +24,8 @@ const EXCLUDED_URLS = [
   `${frontendUrl}thank-you-schedule-call/`,
   `${frontendUrl}thank-you/`,
   `${frontendUrl}home/`,
+  `${frontendUrl}terms-and-conditions/`,
+  `${frontendUrl}privacy-policy/`,
 ].map(url => url.replace(/\/$/, '')); // Remove trailing slashes for comparison
 
 // Function to generate the sitemap XML
