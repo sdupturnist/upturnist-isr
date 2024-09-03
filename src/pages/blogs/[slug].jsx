@@ -265,6 +265,7 @@ export async function getStaticPaths() {
           allBlogs {
             nodes {
               slug
+              
             }
           }
         }`,

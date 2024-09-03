@@ -7,9 +7,9 @@ export default function MetatagsBlogSingle({ data }) {
 
 
     const seo = data[0]?.data?.allBlogs?.nodes[0]?.seo
-    const keyWords = data?.data?.pages?.nodes[0].seoKeywords?.seoKeywords
+    const keyWords = data[0]?.data?.allBlogs?.nodes[0]?.seoKeywords?.seoKeywords
 
-    //console.log(seo?.opengraphImage.sourceUrl)
+
 
 
     const router = useRouter();

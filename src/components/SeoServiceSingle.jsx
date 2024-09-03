@@ -9,7 +9,7 @@ export default function MetatagsServiceSingle({ data }) {
     const seo = data && data?.data?.pages?.nodes[0]?.seo
     const keyWords = data?.data?.pages?.nodes[0].seoKeywords?.seoKeywords
 
-    //console.log(seo)
+//console.log(keyWords)
 
     const router = useRouter();
 
