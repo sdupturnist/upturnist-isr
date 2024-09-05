@@ -5,13 +5,10 @@ import BlurAnimation from '@/components/BlurAnimation';
 import Images from '@/components/Images';
 import Link from "next/link";
 import MetatagsBlogSingle from "@/components/SeoBlogSingle";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
 import TruncatedText from "@/components/TruncateWords";
 const { htmlToText } = require('html-to-text');
 
 export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAllBlogsData }) {
-  const router = useRouter();
   const singleBlog = singleBLogsData?.data?.allBlogs?.nodes[0] ?? null;
   const allBlogs = getAllBlogsData?.data?.allBlogs?.nodes ?? null;
 
@@ -30,9 +27,14 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
     });
   };
 
+  if (!singleBlog) {
+    // Return null, as 404 is handled by Next.js and not by the React component itself
+    return null;
+  }
+
   return (
     <>
-      {singleBLogsData?.data?.allBlogs?.nodes.length !== 0 &&
+      {singleBlog && (
         <>
           <MetatagsBlogSingle data={[singleBLogsData]} />
           <Layout>
@@ -41,26 +43,26 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
               <div className="container">
                 <div className="inner">
                   <div className="inner-2">
-                    <h1 data-aos="fade-up">{singleBlog && singleBlog?.title}​</h1>
+                    <h1 data-aos="fade-up">{singleBlog.title}​</h1>
                     <div data-aos="fade-up">
-                      {singleBlog && <Images
-                        imageurl={singleBlog?.featuredImage?.node?.sourceUrl || 'sample-link'}
+                      <Images
+                        imageurl={singleBlog.featuredImage?.node?.sourceUrl || 'sample-link'}
                         styles={''}
                         quality={100}
                         width={'1000'}
                         height={'500'}
-                        alt={singleBlog?.featuredImage?.node?.altText || 'no alt'}
-                        title={singleBlog?.featuredImage?.node?.altText || 'no alt'}
+                        alt={singleBlog.featuredImage?.node?.altText || 'no alt'}
+                        title={singleBlog.featuredImage?.node?.altText || 'no alt'}
                         placeholder={true}
                         classes={'w-full block'}
-                      />}
+                      />
                     </div>
-                    <div data-aos="fade-up" className="blog-content" dangerouslySetInnerHTML={{ __html: singleBlog?.content }} />
-                    <p className="text-[24px]">{formatBlogDate(singleBlog?.date)}</p>
+                    <div data-aos="fade-up" className="blog-content" dangerouslySetInnerHTML={{ __html: singleBlog.content }} />
+                    <p className="text-[24px]">{formatBlogDate(singleBlog.date)}</p>
                     <div className="inner-3">
                       <h3 data-aos="fade-up">More blogs</h3>
                       <div className="inner-4">
-                        {allBlogs && allBlogs.filter(post => post.slug !== router.query.slug).map((blog, key) => (
+                        {allBlogs && allBlogs.filter(post => post.slug !== singleBlog.slug).map((blog, key) => (
                           <Link
                             key={key}
                             title={`Read blog: ${blog.title}`}
@@ -93,16 +95,19 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
             </section>
           </Layout>
         </>
-      }
+      )}
     </>
   );
 }
+
+
 
 export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
 
   try {
+    // Fetch the blog data based on slug
     const blogData = await fetch(wordpressGraphQlApiUrl, {
       method: "POST",
       headers: {
@@ -121,9 +126,6 @@ export async function getStaticProps(context) {
                   sourceUrl
                 }
               }
-                   seoKeywords{
-          seoKeywords
-        }
               seo {
                 canonical
                 focuskw
@@ -155,6 +157,14 @@ export async function getStaticProps(context) {
     });
     const singleBLogsData = await blogData.json();
 
+    // Check if the blog data exists, otherwise return notFound
+    if (!singleBLogsData?.data?.allBlogs?.nodes.length) {
+      return {
+        notFound: true,
+      };
+    }
+
+    // Fetch the static page data
     const pageData = await fetch(wordpressGraphQlApiUrl, {
       method: "POST",
       headers: {
@@ -171,9 +181,6 @@ export async function getStaticProps(context) {
                   sourceUrl
                 }
               }
-                   seoKeywords{
-          seoKeywords
-        }
               seo {
                 canonical
                 opengraphSiteName
@@ -204,6 +211,7 @@ export async function getStaticProps(context) {
     });
     const blogSinglePageData = await pageData.json();
 
+    // Fetch all blogs for the "More blogs" section
     const blogsData = await fetch(wordpressGraphQlApiUrl, {
       method: "POST",
       headers: {
@@ -216,9 +224,6 @@ export async function getStaticProps(context) {
               title
               content
               slug
-                 seoKeywords{
-          seoKeywords
-        }
               featuredImage {
                 node {
                   sourceUrl
@@ -243,18 +248,14 @@ export async function getStaticProps(context) {
   } catch (error) {
     console.error('Error fetching data:', error);
     return {
-      props: {
-        singleBLogsData: {},
-        blogSinglePageData: {},
-        getAllBlogsData: {}
-      },
-      revalidate: 10,
+      notFound: true,
     };
   }
 }
 
 export async function getStaticPaths() {
   try {
+    // Fetch all blog slugs
     const res = await fetch(wordpressGraphQlApiUrl, {
       method: "POST",
       headers: {
@@ -265,7 +266,6 @@ export async function getStaticPaths() {
           allBlogs {
             nodes {
               slug
-              
             }
           }
         }`,
@@ -275,13 +275,14 @@ export async function getStaticPaths() {
     const data = await res.json();
     const allBlogs = data?.data?.allBlogs?.nodes ?? [];
 
+    // Map slugs to paths
     const paths = allBlogs.map(blog => ({
       params: { slug: blog.slug },
     }));
 
     return {
       paths,
-      fallback: 'blocking',
+      fallback: 'blocking', // or 'false' to generate pages at build time
     };
   } catch (error) {
     console.error('Error fetching paths:', error);
