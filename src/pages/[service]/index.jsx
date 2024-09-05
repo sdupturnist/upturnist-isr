@@ -12,15 +12,15 @@ export default function Service({ servicePageData }) {
   // Destructure data from servicePageData
   const pageData = servicePageData?.data?.pages?.nodes[0] ?? null;
 
-  // if (!pageData) {
-  //   // Fallback UI for when pageData is not available
-  //   return <p>Page not found</p>;
-  // }
+  if (!pageData) {
+    // Fallback UI for when pageData is not available
+    return <p>Page not found</p>;
+  }
 
   return (
     <>
-     {pageData &&   <> <MetatagsServiceSingle data={servicePageData} />
-    <Layout>
+      <MetatagsServiceSingle data={servicePageData} />
+      <Layout>
         <AOSInit />
         <div className="service-single">
           <section
@@ -74,7 +74,7 @@ export default function Service({ servicePageData }) {
             <BlurAnimation position="top right" />
           </section>
         </div>
-      </Layout> </>}
+      </Layout>
     </>
   );
 }
@@ -191,11 +191,11 @@ export async function getStaticPaths() {
       // Check if the servicePageData or pageData is null or undefined
       const pageData = servicePageData?.data?.pages?.nodes[0] ?? null;
   
-      // if (!pageData) {
-      //   return {
-      //     notFound: true, // Trigger 404 page
-      //   };
-      // }
+      if (servicePageData && !pageData) {
+        return {
+          notFound: true, // Trigger 404 page
+        };
+      }
   
       return {
         props: {
