@@ -15,17 +15,17 @@ export default function Service({ servicePageData }) {
 
 
     // Check if servicePageData is null
-    if (!servicePageData) {
-        return null;
-    }
+    // if (!servicePageData) {
+    //     return null;
+    // }
 
     const pageData = servicePageData.data.pages.nodes[0];
 
     // Check if pageData is undefined or null
-    if (!pageData) {
-        // Redirect to 404 page
-        return <p>Page not found</p>;
-    }
+    // if (!pageData) {
+    //     // Redirect to 404 page
+    //     return <p>Page not found</p>;
+    // }
 
     return (
         <>
