@@ -10,7 +10,10 @@ import Accordion from "@/components/Accordion";
 
 export default function Service({ servicePageData }) {
   // Destructure data from servicePageData
-  const pageData = servicePageData?.data?.pages?.nodes[0] ?? null;
+  const pageData = servicePageData?.data?.pages?.nodes[0];
+
+  
+
 
   if (!pageData) {
     // Fallback UI for when pageData is not available
@@ -189,9 +192,9 @@ export async function getStaticPaths() {
       const servicePageData = await serviceData.json();
   
       // Check if the servicePageData or pageData is null or undefined
-      const pageData = servicePageData?.data?.pages?.nodes[0] ?? null;
+      const pageData = servicePageData?.data?.pages?.nodes[0];
   
-      if (servicePageData && !pageData) {
+      if (!pageData) {
         return {
           notFound: true, // Trigger 404 page
         };
