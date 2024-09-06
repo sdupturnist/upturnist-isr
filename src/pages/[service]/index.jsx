@@ -7,18 +7,33 @@ import MetatagsServiceSingle from "@/components/SeoServiceSingle";
 import AnimatedTextCharacter from "@/components/AnimatedText";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import Accordion from "@/components/Accordion";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Service({ servicePageData }) {
+
+  const router = useRouter();
+
+
   // Destructure data from servicePageData
   const pageData = servicePageData?.data?.pages?.nodes[0];
 
   
 
+  //console.log(pageData)
 
-  if (!pageData) {
-    // Fallback UI for when pageData is not available
-    return <p>Page not found</p>;
-  }
+  // if (!pageData) {
+  //   // Fallback UI for when pageData is not available
+  //   return <p>Page not found</p>;
+  // }
+
+  useEffect(() => {
+    if(!pageData) {
+        router.push('/404');
+      }
+      
+    }, [pageData])
+
 
   return (
     <>
@@ -192,13 +207,13 @@ export async function getStaticPaths() {
       const servicePageData = await serviceData.json();
   
       // Check if the servicePageData or pageData is null or undefined
-      const pageData = servicePageData?.data?.pages?.nodes[0];
+      // const pageData = servicePageData?.data?.pages?.nodes[0];
   
-      if (!pageData) {
-        return {
-          notFound: true, // Trigger 404 page
-        };
-      }
+      // if (!pageData) {
+      //   return {
+      //     notFound: true, // Trigger 404 page
+      //   };
+      // }
   
       return {
         props: {
