@@ -158,11 +158,11 @@ export async function getStaticProps(context) {
     const singleBLogsData = await blogData.json();
 
     // Check if the blog data exists, otherwise return notFound
-    if (!singleBLogsData?.data?.allBlogs?.nodes.length) {
-      return {
-        notFound: true,
-      };
-    }
+    // if (!singleBLogsData?.data?.allBlogs?.nodes.length) {
+    //   return {
+    //     notFound: true,
+    //   };
+    // }
 
     // Fetch the static page data
     const pageData = await fetch(wordpressGraphQlApiUrl, {
