@@ -6,9 +6,17 @@ import Images from '@/components/Images';
 import Link from "next/link";
 import MetatagsBlogSingle from "@/components/SeoBlogSingle";
 import TruncatedText from "@/components/TruncateWords";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 const { htmlToText } = require('html-to-text');
 
+
 export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAllBlogsData }) {
+
+  const router = useRouter();
+
+
+
   const singleBlog = singleBLogsData?.data?.allBlogs?.nodes[0] ?? null;
   const allBlogs = getAllBlogsData?.data?.allBlogs?.nodes ?? null;
 
@@ -27,10 +35,17 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
     });
   };
 
-  if (!singleBlog) {
-    // Return null, as 404 is handled by Next.js and not by the React component itself
-    return null;
-  }
+  
+
+  if(!singleBlog) {
+    useEffect(() => {
+        router.push('/404');
+    }, [])
+    return
+}
+
+
+
 
   return (
     <>
