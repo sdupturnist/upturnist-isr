@@ -15,6 +15,8 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
 
   const router = useRouter();
 
+  
+
 
 
   const singleBlog = singleBLogsData?.data?.allBlogs?.nodes[0] ?? null;
