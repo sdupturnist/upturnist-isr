@@ -37,8 +37,8 @@ export default function Service({ servicePageData }) {
 
   return (
     <>
-      <MetatagsServiceSingle data={servicePageData} />
-      <Layout>
+    {pageData &&  <MetatagsServiceSingle data={servicePageData} /> }
+    {pageData &&  <Layout>
         <AOSInit />
         <div className="service-single">
           <section
@@ -92,7 +92,7 @@ export default function Service({ servicePageData }) {
             <BlurAnimation position="top right" />
           </section>
         </div>
-      </Layout>
+      </Layout>}
     </>
   );
 }
