@@ -26,12 +26,13 @@ export default function Document() {
               })(window,document,'script','dataLayer','${GTM_ID}');
             `,
           }}
-          type="text/partytown"
+         // type="text/partytown"
+           type="text/javascript"
         />
    </Head>
       <body>
         {/* GTM noscript fallback */}
-        <noscript>
+     <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0"
