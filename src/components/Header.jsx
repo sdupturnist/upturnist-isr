@@ -131,7 +131,12 @@ function Nav({ initialData, type }) {
         <div className="sm:px-8 px-4">
           <div className="inner---">
             {/* {theme} */}
-            <Logo url={`${frontendUrl}images/upturnist-logo.webp`} alt="branding_and_digital_marketing_dubai_upturnist_logo" logoTitle="branding and digital marketing dubai upturnist logo" />
+            <Logo 
+            url={`${frontendUrl}images/upturnist-logo.webp`} 
+            alt="branding_and_digital_marketing_dubai_upturnist_logo" 
+            logoTitle="branding and digital marketing dubai upturnist logo" 
+            for_page={type}
+            />
             <div className='wrpr--nav-1'>
             {/* <button className='hamburger-button cursor-pointer'  onClick={toggleTheme}> */}
             {/* {theme !== 'light' ? */}
