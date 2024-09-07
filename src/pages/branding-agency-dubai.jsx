@@ -209,7 +209,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
           </section>
         <section className="hero hero-lp lg:pt-[150px] sm:pt-[70px] pt-[50px] sm:pb-[50px] items-center relative sm:text-start text-center hero_slider- ">
     
-
+<div className="xl:block hidden">
 <Slider {...settings}>
 
 {sliderBanner && sliderBanner.map((item, key)  => {
@@ -286,6 +286,43 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
     )
    })}
     </Slider>
+    </div>
+    <div className="xl:hidden">
+    {sliderBanner && sliderBanner.map((item, key)  => {
+    return(
+      <div  key={key} className="mb-[50px]">
+      <div className="lg:w-[70%] xl:flex gap-[50px] mx-auto px-[50px] text-center xl:text-start">
+      <Images
+                        imageurl={item?.img}
+                        styles={''}
+                        quality={100}
+                        width={'500'}
+                        height={'500'}
+                        alt={item?.title}
+                        placeholder={true}
+                        classes={'w-full block lg:mt-0 mb-[30px] '}
+                      />
+  <div className="grid items-center">
+       <div className="grid gap-[16px] sm:gap-[24px]">
+       <span  dangerouslySetInnerHTML={{ __html: item?.title }} />
+        <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: item?.desc }} />
+        <div>
+          <button
+            onClick={openCallBackModal}
+            aria-label={pageData && pageData.landingPage1.heroCtaLable}
+            className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10 hover:bg-sky-600 hover:border-sky-600 focus:border-sky-600 focus:text-white mt-5'
+          >
+            {pageData && pageData.landingPage1.heroCtaLable}
+          </button>
+        </div>
+       </div>
+         </div>
+       
+      </div>
+    </div>
+    )
+   })}
+    </div>
     <BlurAnimation position="top right" />
     
     </section>
