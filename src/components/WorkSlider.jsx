@@ -78,6 +78,7 @@ export default function ThreeDSlider(props) {
             >
                 {props.data && props.data.data.works.nodes.map((item, index) => (
                     props.popup === 'true' ? (
+                        props.for_page !== 'landing' ?
                         <SwiperSlide key={index}>
                             <div className="work-item item" onClick={() => openModal(item)}>
                                 <Images
@@ -103,7 +104,35 @@ export default function ThreeDSlider(props) {
                                 }} />
                             </div>
                         </SwiperSlide>
+                        :
+                        <SwiperSlide key={index}>
+                        <div className="work-item item" onClick={() => openModal(item)}>
+                            <Images
+                                //ref={workImageRef}
+                                src={item.featuredImage.node.sourceUrl}
+                                imageurl={item.featuredImage.node.sourceUrl}
+                                styles={''}
+                                quality={100}
+                                width={'500'}
+                                height={'500'}
+                                alt={item.featuredImage.node.altText}
+                                placeholder={false}
+                                classes={'block w-full object-cover'}
+                                onLoad={openModal}
+                            />
+                            <span className='hidden'>{item.title}</span>
+                            <div className="inner-work" dangerouslySetInnerHTML={{
+                                __html: item.content &&
+                                    item.content
+                                        .replace("Client: ", "")
+                                        .replace("Project: ", "")
+                                        .replace("|", "<br/>")
+                            }} />
+                        </div>
+                    </SwiperSlide>
+                            
                     ) : (
+                        props.for_page !== 'landing' ?
                         <SwiperSlide key={index}>
                             <div>
                                 <Images
@@ -119,6 +148,22 @@ export default function ThreeDSlider(props) {
                                 <p className='work-info'>{item.title}</p>
                             </div>
                         </SwiperSlide>
+                        :
+                        <SwiperSlide key={index}>
+                        <div>
+                            <Images
+                                imageurl={item.featuredImage.node.sourceUrl}
+                                styles={''}
+                                quality={100}
+                                width={'500'}
+                                height={'500'}
+                                alt={item?.works?.landigPageAltAndTitle}
+                                placeholder={false}
+                                classes={'block w-full'}
+                            />
+                            <p className='work-info'>{item.title}</p>
+                        </div>
+                    </SwiperSlide>
                     )
                 ))}
             </Swiper>

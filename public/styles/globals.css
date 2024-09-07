@@ -10266,3 +10266,27 @@ textarea.input {
   background: rgba(21, 42, 55, 0.25);
   border: solid thin rgba(255, 255, 255, 0.1019607843);
 }
+
+.hero-slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-slide.fade-in {
+  opacity: 1;
+}
+
+.hero-slide.fade-out {
+  opacity: 0;
+}
+
+.hero-lp:after {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(3, 30, 45, 0.9098039216);
+}

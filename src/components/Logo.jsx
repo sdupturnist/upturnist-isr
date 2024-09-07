@@ -6,14 +6,21 @@ function Logo(props) {
     const {
         url,
         alt,
-        logoTitle
+        logoTitle,
+        for_page
     } = props
 
     return (<>
         {props &&
-            <Link title="Upturnist Logo" aria-label="Upturnist Logo" className='block' href="/">
+            for_page === 'normal' ?
+            <Link title={logoTitle} aria-label={logoTitle} className='block' href="/">
                 <img src={url} alt={alt} title={logoTitle} className="logo max-w-[250px] block w-full" />
-            </Link>}
+            </Link>
+            :
+            <Link title="branding agency in dubai upturnist logo" aria-label="branding agency in dubai upturnist logo" className='block' href="/">
+                <img src={url} alt="branding_agency_in_dubai_upturnist_logo" title="branding agency in dubai upturnist logo" className="logo max-w-[250px] block w-full" />
+            </Link>
+        }
     </>)
 
 

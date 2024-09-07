@@ -10778,3 +10778,27 @@ textarea.input {
         background: rgb(21, 42, 55, 25%);
         border: solid thin #ffffff1a;
 }
+.hero-slide {
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      
+      .hero-slide.fade-in {
+        opacity: 1;
+      }
+      
+      .hero-slide.fade-out {
+        opacity: 0;
+      }
+      
+
+      .hero-lp:after{
+        content:'';
+        display:block;
+        position:fixed;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        background:#031e2de8;
+      }

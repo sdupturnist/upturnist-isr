@@ -13,7 +13,7 @@ import Package from "@/components/Package";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import LocationMap from "@/components/GoogleMap";
 import Accordion from "@/components/Accordion";
 
@@ -27,9 +27,11 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
   const pageData = ___pageData.data.pages.nodes[0]
   const packageData = allPackagesData.data.packages.nodes
   const _testimonial = testimonialData.data.testimonials.nodes
+  const sliderBanner = JSON.parse(pageData && pageData?.landingPage1?.sliderBanner)
 
 
 
+  // sliderBanner && JSON.parse(sliderBanner).map
 
 
   const { setModalFor, setShowModal } = useModalContext()
@@ -157,22 +159,69 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
     }
   );
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [fadeIn, setFadeIn] = useState(true);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFadeIn(false);
+      setTimeout(() => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % sliderBanner.length);
+        setFadeIn(true);
+      }, 500); // Duration of the fade-out effect
+    }, 5000); // Duration of the slide display
+
+    return () => clearInterval(interval);
+  }, [sliderBanner.length]);
+
+
+  //console.log(sliderBanner)
   return (
     <>
       <Metatags data={___pageData} />
       <Layout type="landing-page">
         <AOSInit />
         <div className="landing-page">
+        <section className="hero hero-lp min-h-[100vh] items-center overflow-hidden relative text-center hero_slider-">
+      <div
+        className={`hero-slide flex items-center min-h-[100vh] ${fadeIn ? 'fade-in' : 'fade-out'}`}
+        style={{
+          marginTop: '-100px',
+          backgroundAttachment: 'fixed !important',
+          backgroundPosition: 'center !important',
+          backgroundRepeat: 'no-repeat !important',
+          backgroundSize: 'cover !important',
+          backgroundImage: `url(${sliderBanner[currentSlide].img})`
+        }}
+      >
+        <div className="container z-10 relative">
+          <div className="lg:w-10/12 grid gap-5 mx-auto">
+            <h1 className="lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[1.5rem] leading-tight mb-3">
+              {sliderBanner[currentSlide].title}
+            </h1>
+            <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: sliderBanner[currentSlide].desc }} />
+            <div>
+              <button
+                onClick={openCallBackModal}
+                aria-label={pageData && pageData.landingPage1.heroCtaLable}
+                className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10 hover:bg-sky-600 hover:border-sky-600 focus:border-sky-600 focus:text-white mt-5'
+              >
+                {pageData && pageData.landingPage1.heroCtaLable}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
           <section
             style={{
-              marginTop: '-100px',
               backgroundAttachment: 'fixed !important',
               backgroundPosition: 'center !important',
               backgroundRepeat: 'no-repeat !important',
               backgroundSize: 'cover !important',
               background: `url(${pageData && pageData.landingPage1.heroBackground.node.sourceUrl})`
             }}
-            className={`hero flex items-center sm:pt-[200px] pt-[150px] overflow-hidden relative text-center px-6`} >
+            className={`flex items-center sm:py-[200px] py-[150px] overflow-hidden relative text-center px-6`} >
             <div className="container z-10 relative">
               <div className="lg:w-10/12 grid gap-5 mx-auto">
                 <h1 className="lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[1.5rem] leading-tight mb-3">
@@ -182,18 +231,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
                 <div>
                   <button onClick={openCallBackModal} aria-label={pageData && pageData.landingPage1.heroCtaLable} className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10  hover:bg-sky-600 hover:border-sky-600  focus:border-sky-600 focus:text-white mt-5'>{pageData && pageData.landingPage1.heroCtaLable}</button>
                 </div>
-                <div data-aos="fade-up">
-                  <Images
-                    imageurl={pageData.featuredImage.node.sourceUrl}
-                    styles={''}
-                    quality={100}
-                    width={'500'}
-                    height={'500'}
-                    alt={pageData.featuredImage.node.altText}
-                    placeholder={true}
-                    classes={'block mx-auto'}
-                  />
-                </div>
+
               </div>
             </div>
           </section>
@@ -433,12 +471,12 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
           </section>
 
           <section className="about-bottom-2 text-center sm:pt-[100px]">
-          <div className="container grid gap-[30px]">
-            <h3 data-aos="fade-up" >{pageData && pageData.landingPage1.aboutBottom2Heading}</h3>
-            <div className="about-bottom-2 !sm:pt-[70px] !pt-0" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html: pageData && pageData.landingPage1.aboutBottom2Content }} />
-          </div>
-          <BlurAnimation position="bottom left" />
-        </section>
+            <div className="container grid gap-[30px]">
+              <h3 data-aos="fade-up" >{pageData && pageData.landingPage1.aboutBottom2Heading}</h3>
+              <div className="about-bottom-2 !sm:pt-[70px] !pt-0" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html: pageData && pageData.landingPage1.aboutBottom2Content }} />
+            </div>
+            <BlurAnimation position="bottom left" />
+          </section>
 
           <section className="sm:py-32 py-6 relative overflow-x-hidden text-center">
             <div className="z-10 relative">
@@ -449,7 +487,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
                   </div>
                 </div>
                 <div className="sm:mt-12 relative" data-aos="fade-up">
-                  <ThreeDSlider data={worksData} />
+                  <ThreeDSlider for_page="landing" data={worksData} />
                 </div>
               </div>
             </div>
@@ -495,21 +533,21 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
             </div>
           </section>
           <section className="faq-landingpage text-center">
-          <div className="container">
-            <div>
-              <div className="lg:basis-[100%]">
-                <h4 data-aos="fade-up">{pageData && pageData.landingPage1.faqHeading}​</h4>
-              </div>
-              <div className="inner" data-aos="fade-up">
-                {pageData && <Accordion data={pageData && pageData.landingPage1.faq} />}
+            <div className="container">
+              <div>
+                <div className="lg:basis-[100%]">
+                  <h4 data-aos="fade-up">{pageData && pageData.landingPage1.faqHeading}​</h4>
+                </div>
+                <div className="inner" data-aos="fade-up">
+                  {pageData && <Accordion data={pageData && pageData.landingPage1.faq} />}
+                </div>
               </div>
             </div>
-          </div>
-          <BlurAnimation position="bottom right" />
-        </section>
+            <BlurAnimation position="bottom right" />
+          </section>
           <section className="relative overflow-hidden">
-         <LocationMap/>
-        </section>
+            <LocationMap />
+          </section>
         </div>
       </Layout >
     </>
@@ -562,6 +600,7 @@ export async function getStaticProps(context) {
             sourceUrl
           }
         }
+        sliderBanner
         worksHeading
         about
         aboutCta
@@ -670,6 +709,9 @@ opengraphSiteName
               nodes {
                 title
                 content
+              works{
+                landigPageAltAndTitle
+              }
                 featuredImage{
                   node{
                     sourceUrl
@@ -729,12 +771,12 @@ opengraphSiteName
     };
   } catch (error) {
     console.error('Error fetching data:', error);
- return {
+    return {
       props: {
-        ___pageData:{},
-        allPackagesData:{},
-        worksData:{},
-        testimonialData:{}
+        ___pageData: {},
+        allPackagesData: {},
+        worksData: {},
+        testimonialData: {}
       },
       revalidate: 10, // ISR: Still set a revalidate time even on error
     };
