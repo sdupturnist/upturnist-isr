@@ -16,12 +16,13 @@ import { useGSAP } from '@gsap/react';
 import { useEffect, useRef, useState } from "react";
 import LocationMap from "@/components/GoogleMap";
 import Accordion from "@/components/Accordion";
-
+import Slider from "react-slick";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 
 export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, allPackagesData, worksData, testimonialData }) {
+
 
 
   const pageData = ___pageData.data.pages.nodes[0]
@@ -159,20 +160,21 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
     }
   );
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [fadeIn, setFadeIn] = useState(true);
+  
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFadeIn(false);
-      setTimeout(() => {
-        setCurrentSlide((prevSlide) => (prevSlide + 1) % sliderBanner.length);
-        setFadeIn(true);
-      }, 500); // Duration of the fade-out effect
-    }, 5000); // Duration of the slide display
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: '',
+    prevArrow: '',
+    autoplay: true,
+    arrows: false,
+    autoplaySpeed: 7000,
+  };
 
-    return () => clearInterval(interval);
-  }, [sliderBanner.length]);
 
 
   //console.log(sliderBanner)
@@ -181,37 +183,8 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
       <Metatags data={___pageData} />
       <Layout type="landing-page">
         <AOSInit />
-        <div className="landing-page">
-        <section className="hero hero-lp min-h-[100vh] items-center overflow-hidden relative text-center hero_slider- mt-[-100px]">
-      <div
-        className={`hero-slide flex items-center min-h-[100vh] ${fadeIn ? 'fade-in' : 'fade-out'}`}
-        style={{
-           backgroundAttachment: 'fixed !important',
-          backgroundPosition: 'center !important',
-          backgroundRepeat: 'no-repeat !important',
-          backgroundSize: 'cover !important',
-          backgroundImage: `url(${sliderBanner[currentSlide].img})`
-        }}
-      >
-        <div className="container z-10 relative">
-          <div className="lg:w-10/12 grid gap-5 mx-auto">
-           
-              <span  dangerouslySetInnerHTML={{ __html: sliderBanner[currentSlide].title }} />
-            <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: sliderBanner[currentSlide].desc }} />
-            <div>
-              <button
-                onClick={openCallBackModal}
-                aria-label={pageData && pageData.landingPage1.heroCtaLable}
-                className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10 hover:bg-sky-600 hover:border-sky-600 focus:border-sky-600 focus:text-white mt-5'
-              >
-                {pageData && pageData.landingPage1.heroCtaLable}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-          <section
+        <div className="landing-page overflow-hidden">
+        <section
             style={{
               backgroundAttachment: 'fixed !important',
               backgroundPosition: 'center !important',
@@ -219,20 +192,104 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
               backgroundSize: 'cover !important',
               background: `url(${pageData && pageData.landingPage1.heroBackground.node.sourceUrl})`
             }}
-            className={`flex items-center sm:py-[200px] py-[150px] overflow-hidden relative text-center px-6`} >
+            className={`flex items-center sm:min-h-[100vh] sm:py-[200px] py-[50px] overflow-hidden relative text-center sm:mt-[-100px] px-6`} >
             <div className="container z-10 relative">
-              <div className="lg:w-10/12 grid gap-5 mx-auto">
+              <div className="lg:w-10/12  grid gap-[16px] sm:gap-5  mx-auto">
                 <h1 className="lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[1.5rem] leading-tight mb-3">
                   {pageData.title && pageData.title}
                 </h1>
-                <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: pageData.content && pageData.content }} />
+              <div className="grid gap-[20px]">
+              <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: pageData.content && pageData.content }} />
                 <div>
                   <button onClick={openCallBackModal} aria-label={pageData && pageData.landingPage1.heroCtaLable} className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10  hover:bg-sky-600 hover:border-sky-600  focus:border-sky-600 focus:text-white mt-5'>{pageData && pageData.landingPage1.heroCtaLable}</button>
                 </div>
-
               </div>
+   </div>
             </div>
           </section>
+        <section className="hero hero-lp lg:pt-[150px] sm:pt-[70px] pt-[50px] sm:pb-[50px] items-center relative sm:text-start text-center hero_slider- ">
+    
+
+<Slider {...settings}>
+
+{sliderBanner && sliderBanner.map((item, key)  => {
+    return(
+      <div  key={key}>
+      <div className="lg:w-[70%] xl:flex gap-[50px] mx-auto px-[50px] text-center xl:text-start">
+  <div className="grid items-center">
+       <div className="grid gap-[16px] sm:gap-[24px]">
+       <span  dangerouslySetInnerHTML={{ __html: item?.title }} />
+        <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: item?.desc }} />
+        <div>
+          <button
+            onClick={openCallBackModal}
+            aria-label={pageData && pageData.landingPage1.heroCtaLable}
+            className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10 hover:bg-sky-600 hover:border-sky-600 focus:border-sky-600 focus:text-white mt-5'
+          >
+            {pageData && pageData.landingPage1.heroCtaLable}
+          </button>
+        </div>
+       </div>
+         </div>
+        <div className="lg:hidden">
+        <Images
+                        imageurl={item?.img}
+                        styles={''}
+                        quality={100}
+                        width={'500'}
+                        height={'500'}
+                        alt={item?.title}
+                        placeholder={true}
+                        classes={'w-full block lg:mt-0 mt-[50px] sm:mt-[100px]'}
+                      />
+        </div>
+         <div className="img-wrpr mx-auto w-[60%] lg:block hidden" data-aos="fade-up">
+                <div className="photo-box-wrpr lg:mt-0 mt-[100px]">
+                  <Images
+                    imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-2.svg'}
+                    styles={''}
+                    quality={100}
+                    width={'500'}
+                    height={'500'}
+                    alt={'SEO expert Dubai'}
+                    placeholder={true}
+                    classes={'frame-1 block'}
+                  />
+                  <div className="photo-box">
+                    <figure>
+                      <Images
+                        imageurl={item?.img}
+                        styles={''}
+                        quality={100}
+                        width={'500'}
+                        height={'500'}
+                        alt={item?.title}
+                        placeholder={true}
+                        classes={'w-full block '}
+                      />
+                    </figure>
+                  </div>
+                  <Images
+                    imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-1.svg'}
+                    styles={''}
+                    quality={100}
+                    width={'500'}
+                    height={'500'}
+                    alt={'SEO marketing agency uae'}
+                    placeholder={false}
+                    classes={'frame-1 block top-0'}
+                  />
+                </div>
+              </div>
+      </div>
+    </div>
+    )
+   })}
+    </Slider>
+    <BlurAnimation position="top right" />
+    
+    </section>
+     
 
           <section>
             <div className="container-boxed z-10 relative sm:py-[150px] py-[50px] px-4 text-center">

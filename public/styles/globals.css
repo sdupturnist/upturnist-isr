@@ -10279,14 +10279,3 @@ textarea.input {
 .hero-slide.fade-out {
   opacity: 0;
 }
-
-.hero-lp:after {
-  content: "";
-  display: block;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(3, 30, 45, 0.9098039216);
-}
