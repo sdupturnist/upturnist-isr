@@ -13,7 +13,6 @@ import QuickContactForm from "./Forms/QuickEnquiryForm";
 import PackageBookingForm from "./Forms/PackageBookingForm";
 import Link from "next/link";
 import { useEffect } from "react";
-import { GoogleTagManager } from '@next/third-parties/google'
 
 
 export default function Layout({ children, type }) {
@@ -22,7 +21,7 @@ export default function Layout({ children, type }) {
  
   //console.log(modalData[0])
 
-   const GTM_ID = 'GTM-PGFRFK3X'; // Update with your GTM ID
+   
    
 
   useEffect(() => {
@@ -57,7 +56,7 @@ export default function Layout({ children, type }) {
         :
         <Header type="normal" />
       }
-       <GoogleTagManager gtmId={GTM_ID} />
+     
        <main >{children}</main>
       <Footer />
 
