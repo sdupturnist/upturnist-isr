@@ -182,12 +182,11 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
       <Layout type="landing-page">
         <AOSInit />
         <div className="landing-page">
-        <section className="hero hero-lp min-h-[100vh] items-center overflow-hidden relative text-center hero_slider-">
+        <section className="hero hero-lp min-h-[100vh] items-center overflow-hidden relative text-center hero_slider- mt-[-100px]">
       <div
         className={`hero-slide flex items-center min-h-[100vh] ${fadeIn ? 'fade-in' : 'fade-out'}`}
         style={{
-          marginTop: '-100px',
-          backgroundAttachment: 'fixed !important',
+           backgroundAttachment: 'fixed !important',
           backgroundPosition: 'center !important',
           backgroundRepeat: 'no-repeat !important',
           backgroundSize: 'cover !important',
