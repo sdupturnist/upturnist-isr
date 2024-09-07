@@ -13,7 +13,7 @@ import QuickContactForm from "./Forms/QuickEnquiryForm";
 import PackageBookingForm from "./Forms/PackageBookingForm";
 import Link from "next/link";
 import { useEffect } from "react";
-
+import { GoogleTagManager } from '@next/third-parties/google'
 
 
 export default function Layout({ children, type }) {
@@ -22,6 +22,8 @@ export default function Layout({ children, type }) {
  
   //console.log(modalData[0])
 
+   const GTM_ID = 'GTM-PGFRFK3X'; // Update with your GTM ID
+   
 
   useEffect(() => {
     // Select all links in the component
@@ -55,6 +57,16 @@ export default function Layout({ children, type }) {
         :
         <Header type="normal" />
       }
+       <GoogleTagManager gtmId={GTM_ID} />
+        {/* GTM noscript fallback */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
       <main >{children}</main>
       <Footer />
 
