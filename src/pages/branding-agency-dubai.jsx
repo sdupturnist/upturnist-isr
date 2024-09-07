@@ -195,9 +195,8 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
       >
         <div className="container z-10 relative">
           <div className="lg:w-10/12 grid gap-5 mx-auto">
-            <h1 className="lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[1.5rem] leading-tight mb-3">
-              {sliderBanner[currentSlide].title}
-            </h1>
+           
+              <span  dangerouslySetInnerHTML={{ __html: sliderBanner[currentSlide].title }} />
             <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: sliderBanner[currentSlide].desc }} />
             <div>
               <button

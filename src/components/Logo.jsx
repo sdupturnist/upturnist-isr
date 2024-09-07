@@ -14,7 +14,7 @@ function Logo(props) {
         {props &&
             for_page === 'normal' ?
             <Link title={logoTitle} aria-label={logoTitle} className='block' href="/">
-                <img src={url} alt={alt} title={logoTitle} className="logo max-w-[250px] block w-full" />
+                 <img src={url} alt={alt} title={logoTitle} className="logo max-w-[250px] block w-full" />
             </Link>
             :
             <Link title="branding agency in dubai upturnist logo" aria-label="branding agency in dubai upturnist logo" className='block' href="/">
