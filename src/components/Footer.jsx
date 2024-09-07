@@ -70,7 +70,7 @@ export default function Footer({ initialData }) {
                     <li><Link title="Portfolio" aria-label="Portfolio" href="/portfolio/" className="link-hover">Portfolio</Link></li>
                     <li><Link title="Blog" aria-label="Blog" href="/blogs/" className="link-hover">Blog</Link></li>
                     <li><Link title="Contact" aria-label="Contact" href="/contact/" className="link-hover">Contact</Link></li>
-                    <li><Link title="Branding and Digital Marketing UAE" aria-label="Contact" href="/branding-agency-dubai/" className="link-hover">Branding agency in uae</Link></li>
+                    <li><Link title="Branding and Digital Marketing UAE" aria-label="Contact" href="/branding-agency-dubai/" className="link-hover">Branding agency Dubai</Link></li>
                     <li><Link title="Terms and conditions" aria-label="Contact" href="/terms-and-conditions/" className="link-hover">Terms and conditions</Link></li>
                     <li><Link title="Privacy policy" aria-label="Contact" href="/privacy-policy/" className="link-hover">Privacy policy</Link></li>
                   </ul>
