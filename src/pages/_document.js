@@ -10,7 +10,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         {/* Integrating Partytown for performance optimization */}
-        <Partytown debug={true} forward={['dataLayer.push']} />
+        {/* <Partytown debug={true} forward={['dataLayer.push']} /> */}
         
         {/* Google Tag Manager component */}
         <GoogleTagManager gtmId={GTM_ID} />

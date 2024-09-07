@@ -192,7 +192,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
               backgroundSize: 'cover !important',
               background: `url(${pageData && pageData.landingPage1.heroBackground.node.sourceUrl})`
             }}
-            className={`flex items-center sm:min-h-[100vh] sm:py-[200px] py-[50px] overflow-hidden relative text-center sm:mt-[-100px] px-6`} >
+            className="flex items-center sm:min-h-[100vh] sm:py-[200px] py-[50px] overflow-hidden relative text-center sm:mt-[-100px] px-6" >
             <div className="container z-10 relative">
               <div className="lg:w-10/12  grid gap-[16px] sm:gap-5  mx-auto">
                 <h1 className="lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[1.5rem] leading-tight mb-3">
