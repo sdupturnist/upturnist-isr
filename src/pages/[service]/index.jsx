@@ -29,12 +29,12 @@ export default function Service({ servicePageData }) {
 
 
 
-  useEffect(() => {
-    if(servicePageData.data.pages.nodes.length === 0) {
-        router.push('/404');
-      }
+  // useEffect(() => {
+  //   if(servicePageData.data.pages.nodes.length === 0) {
+  //       router.push('/404');
+  //     }
       
-    }, [])
+  //   }, [])
 
 
   return (
