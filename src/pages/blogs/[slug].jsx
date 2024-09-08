@@ -37,14 +37,24 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
 
   
 
-    useEffect(() => {
-    if(!singleBlog) {
-        router.push('/404');
-      }
+    // useEffect(() => {
+    // if(!singleBlog) {
+    //     router.push('/404');
+    //   }
       
-    }, [singleBlog])
+    // }, [singleBlog])
     
 
+      useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (!singleBlog) {
+        router.push('/404');
+      }
+    }, 1000); // Delay in milliseconds (e.g., 1000ms = 1 second)
+
+    // Cleanup function to clear the timeout if the component unmounts or dependencies change
+    return () => clearTimeout(timeoutId);
+  }, [singleBlog, router]);
 
     
 
