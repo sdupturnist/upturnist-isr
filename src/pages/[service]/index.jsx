@@ -27,12 +27,12 @@ export default function Service({ servicePageData }) {
   //   return <p>Page not found</p>;
   // }
 
-  useEffect(() => {
-    if(!pageData) {
-        router.push('/404');
-      }
+  // useEffect(() => {
+  //   if(!pageData) {
+  //       router.push('/404');
+  //     }
       
-    }, [pageData])
+  //   }, [pageData])
 
 
   return (
