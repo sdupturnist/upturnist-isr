@@ -22,17 +22,7 @@ const nextConfig = {
       //   permanent: true,
       //   basePath: false, // Ensures that basePath is not considered
       // },
-      {
-        source: '/(.*)',
-        has: [
-              {
-                type: 'host',
-                value: '(www.upturnist.com|upturnist.com)',
-              },
-             ],
-        permanent: true,
-        destination: 'https://upturnist.com/:1',
-      },
+     
       {
         source: '/our-works/',
         destination: '/portfolio/',
