@@ -37,16 +37,16 @@ export default function BlogSingle({ singleBLogsData, blogSinglePageData, getAll
 
   
 
-    
-  useEffect(() => {
-    if(singleBLogsData?.data?.allBlogs?.nodes.length === 0) {
+    useEffect(() => {
+    if(!singleBlog) {
         router.push('/404');
       }
       
-    }, [])
+    }, [singleBlog])
+    
 
 
-
+    
 
   return (
     <>
