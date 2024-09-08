@@ -29,12 +29,16 @@ export default function Service({ servicePageData }) {
 
 
 
-  // useEffect(() => {
-  //   if(servicePageData.data.pages.nodes.length === 0) {
-  //       router.push('/404');
-  //     }
-      
-  //   }, [])
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (servicePageData.data.pages.nodes.length === 0) {
+        router.push('/404');
+      }
+    }, 1000); // Delay in milliseconds (e.g., 1000ms = 1 second)
+
+    // Cleanup function to clear the timeout if the component unmounts or dependencies change
+    return () => clearTimeout(timeoutId);
+  }, [servicePageData.data.pages.nodes.length, router]);
 
 
   return (
