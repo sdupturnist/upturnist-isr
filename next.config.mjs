@@ -89,7 +89,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/essential-elements-branding-strategies-in-uae,
+        source: '/essential-elements-branding-strategies-in-uae',
         destination: '/essential-elements-branding-strategies-uae/',
         permanent: true,
       },
@@ -104,7 +104,7 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/how-ai-generated-content-play-in-seo/,
+        source: '/how-ai-generated-content-play-in-seo/',
         destination: '/ai-generated-content-play-seo/',
         permanent: true,
       },
