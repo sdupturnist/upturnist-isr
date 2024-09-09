@@ -219,7 +219,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
                         quality={100}
                         width={'500'}
                         height={'500'}
-                        alt={item?.title}
+                        alt={item?.imgAlt}
                         placeholder={true}
                         classes={`block object-cover mx-auto md:w-[450px] md:h-[450px] w-[240px] h-[240px] rounded-full grayscale`}
                       />
