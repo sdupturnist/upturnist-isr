@@ -37,7 +37,10 @@ export default function Metatags({ data }) {
                     <meta property="og:type" content="website" />
                     <meta property="og:title" content={seo?.title && seo?.title} />
                     <meta property="og:description" content={seo?.opengraphDescription && seo?.opengraphDescription} />
-                    <meta property="og:url" content={(frontendUrl + currentPath + '/').replace(/([^:]\/)\/+/g, "$1")} />
+                    <meta property="og:url" content={(frontendUrl + currentPath + '/')
+                        .replace(/([^:]\/)\/+/g, "$1") // Remove duplicate slashes
+                        .replace(/index\/?/g, "") // Remove "index" and optional trailing slash
+                    } />
                     <meta property="og:site_name" content={seo?.opengraphSiteName && seo?.opengraphSiteName} />
                     <meta property="article:modified_time" content={seo?.opengraphModifiedTime && seo?.opengraphModifiedTime} />
                     <meta property="og:image" content={seo?.opengraphImage && seo?.opengraphImage.sourceUrl} />
