@@ -160,7 +160,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
     }
   );
 
-  
+
 
   const settings = {
     dots: false,
@@ -184,7 +184,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
       <Layout type="landing-page">
         <AOSInit />
         <div className="landing-page overflow-hidden">
-        <section
+          <section
             style={{
               backgroundAttachment: 'fixed !important',
               backgroundPosition: 'center !important',
@@ -198,138 +198,56 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
                 <h1 className="lg:text-[3.5rem] md:text-[4rem] sm:text-[3rem] text-[1.5rem] leading-tight mb-3">
                   {pageData.title && pageData.title}
                 </h1>
-              <div className="grid gap-[20px]">
-              <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: pageData.content && pageData.content }} />
-                <div>
-                  <button onClick={openCallBackModal} aria-label={pageData && pageData.landingPage1.heroCtaLable} className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10  hover:bg-sky-600 hover:border-sky-600  focus:border-sky-600 focus:text-white mt-5'>{pageData && pageData.landingPage1.heroCtaLable}</button>
+                <div className="grid gap-[20px]">
+                  <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: pageData.content && pageData.content }} />
+                  <div>
+                    <button onClick={openCallBackModal} aria-label={pageData && pageData.landingPage1.heroCtaLable} className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10  hover:bg-sky-600 hover:border-sky-600  focus:border-sky-600 focus:text-white mt-5'>{pageData && pageData.landingPage1.heroCtaLable}</button>
+                  </div>
                 </div>
               </div>
-   </div>
             </div>
           </section>
-        <section className="hero hero-lp lg:pt-[150px] sm:pt-[70px] pt-[50px] sm:pb-[50px] items-center relative sm:text-start text-center hero_slider- ">
-    
-<div className="xl:block hidden">
-<Slider {...settings}>
+          <section className="lg:pt-[150px] sm:pt-[70px] pt-[50px] sm:pb-[50px] items-center relative sm:text-start grid gap-[150px] text-center" >
+           {sliderBanner && sliderBanner.map((item, key) => {
+                return (
+                  <div key={key} className="xl:w-[90%] mx-auto" data-aos="fade-up" data-aos-delay={`${key + 1}00`}>
+                    <div className="xl:flex gap-[50px] px-[50px] text-center xl:text-start">
+                    <div  className={`${key == 1 ? 'order-last' : null} mx-auto xl:mb-[0] !md:mb-[60px] !mb-[30px] overflow-hidden min-w-[240px]min-h-[240px]  md:min-w-[450px] md:min-h-[450px] rounded-full relative after:content-[''] after:bg-[#152a37bf] after:absolute after:top-0 after:bottom-0 after:left-0 after:right-0`}>
+                    <Images
+                        imageurl={item?.img}
+                        styles={''}
+                        quality={100}
+                        width={'500'}
+                        height={'500'}
+                        alt={item?.title}
+                        placeholder={true}
+                        classes={`block object-cover mx-auto md:w-[450px] md:h-[450px] w-[240px] h-[240px] rounded-full grayscale`}
+                      />
+                    </div>
+                       <div className="grid items-center">
+                        <div className="grid gap-[16px]">
+                        <h2 class='lg:text-[2.5rem] md:text-[2rem] sm:text-[1.7rem] text-[1.5rem] leading-tight mb-3'>{item?.title}</h2>
+                         <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: item?.desc }} />
+                          <div>
+                            <button
+                              onClick={openCallBackModal}
+                              aria-label={pageData && pageData.landingPage1.heroCtaLable}
+                              className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10 hover:bg-sky-600 hover:border-sky-600 focus:border-sky-600 focus:text-white mt-5'
+                            >
+                              {pageData && pageData.landingPage1.heroCtaLable}
+                            </button>
+                          </div>
+                        </div>
+                      </div>
 
-{sliderBanner && sliderBanner.map((item, key)  => {
-    return(
-      <div  key={key}>
-      <div className="lg:w-[70%] xl:flex gap-[50px] mx-auto px-[50px] text-center xl:text-start">
-  <div className="grid items-center">
-       <div className="grid gap-[16px] sm:gap-[24px]">
-       <span  dangerouslySetInnerHTML={{ __html: item?.title }} />
-        <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: item?.desc }} />
-        <div>
-          <button
-            onClick={openCallBackModal}
-            aria-label={pageData && pageData.landingPage1.heroCtaLable}
-            className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10 hover:bg-sky-600 hover:border-sky-600 focus:border-sky-600 focus:text-white mt-5'
-          >
-            {pageData && pageData.landingPage1.heroCtaLable}
-          </button>
-        </div>
-       </div>
-         </div>
-        <div className="lg:hidden">
-        <Images
-                        imageurl={item?.img}
-                        styles={''}
-                        quality={100}
-                        width={'500'}
-                        height={'500'}
-                        alt={item?.title}
-                        placeholder={true}
-                        classes={'w-full block lg:mt-0 mt-[50px] sm:mt-[100px]'}
-                      />
-        </div>
-         <div className="img-wrpr mx-auto w-[60%] lg:block hidden" data-aos="fade-up">
-                <div className="photo-box-wrpr lg:mt-0 mt-[100px]">
-                  <Images
-                    imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-2.svg'}
-                    styles={''}
-                    quality={100}
-                    width={'500'}
-                    height={'500'}
-                    alt={'SEO expert Dubai'}
-                    placeholder={true}
-                    classes={'frame-1 block'}
-                  />
-                  <div className="photo-box">
-                    <figure>
-                      <Images
-                        imageurl={item?.img}
-                        styles={''}
-                        quality={100}
-                        width={'500'}
-                        height={'500'}
-                        alt={item?.title}
-                        placeholder={true}
-                        classes={'w-full block '}
-                      />
-                    </figure>
+                    </div>
                   </div>
-                  <Images
-                    imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-1.svg'}
-                    styles={''}
-                    quality={100}
-                    width={'500'}
-                    height={'500'}
-                    alt={'SEO marketing agency uae'}
-                    placeholder={false}
-                    classes={'frame-1 block top-0'}
-                  />
-                </div>
-              </div>
-      </div>
-    </div>
-    )
-   })}
-    </Slider>
-    </div>
-    <div className="xl:hidden">
-    {sliderBanner && sliderBanner.map((item, key)  => {
-    return(
-      <div  key={key} className="mb-[50px]">
-      <div className="lg:w-[70%] xl:flex gap-[50px] mx-auto px-[50px] text-center xl:text-start">
-      <Images
-                        imageurl={item?.img}
-                        styles={''}
-                        quality={100}
-                        width={'500'}
-                        height={'500'}
-                        alt={item?.title}
-                        placeholder={true}
-                        classes={'w-full block lg:mt-0 mb-[30px] '}
-                      />
-  <div className="grid items-center">
-       <div className="grid gap-[16px] sm:gap-[24px]">
-       <span  dangerouslySetInnerHTML={{ __html: item?.title }} />
-        <span className='md:text-[1.2rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: item?.desc }} />
-        <div>
-          <button
-            onClick={openCallBackModal}
-            aria-label={pageData && pageData.landingPage1.heroCtaLable}
-            className='w-auto rounded-full uppercase font-semibold bg-sky-500 border-sky-500 my-5 rounded-3 p-5 px-10 hover:bg-sky-600 hover:border-sky-600 focus:border-sky-600 focus:text-white mt-5'
-          >
-            {pageData && pageData.landingPage1.heroCtaLable}
-          </button>
-        </div>
-       </div>
-         </div>
-       
-      </div>
-    </div>
-    )
-   })}
-    </div>
-    <BlurAnimation position="top right" />
-    
-    </section>
-     
-
-          <section>
-            <div className="container-boxed z-10 relative sm:py-[150px] py-[50px] px-4 text-center">
+                )
+              })}
+             <BlurAnimation position="top right" />
+   </section>
+   <section>
+            <div className="container-boxed z-10 relative sm:pb-[150px] pb-[50px] px-4 text-center">
               <div className="lg:w-10/12 grid gap-5 mx-auto">
                 <span className='md:text-[1.5rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: pageData && pageData.landingPage1.about }} />
                 <div>
