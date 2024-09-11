@@ -1651,7 +1651,7 @@ select:focus {
   .photo-box-wrpr .photo-box figure {
     width: 270px;
     height: 320px;
-    margin-left: 8%;
+    margin-left: 1%;
   }
 }
 
@@ -1664,7 +1664,7 @@ select:focus {
 @media only screen and (max-width: 575px) {
   .photo-box-wrpr img {
     max-width: 280px !important;
-    margin-left: 20%;
+    margin-left: 15%;
   }
 }
 .photo-box-wrpr .photo-box figure:after {

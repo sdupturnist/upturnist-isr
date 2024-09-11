@@ -939,7 +939,7 @@ select {
         @media only screen and (max-width: 575px) {
                 width: 270px;
                 height: 320px;     
-                margin-left: 8%; 
+                margin-left: 1%; 
         }
 }
 @media only screen and (max-width: 999px) {
@@ -951,7 +951,7 @@ select {
 @media only screen and (max-width: 575px) {
         .photo-box-wrpr img{
              max-width:280px !important;   
-             margin-left: 20%;
+             margin-left: 15%;
         }
         }
 .photo-box-wrpr .photo-box figure:after {
