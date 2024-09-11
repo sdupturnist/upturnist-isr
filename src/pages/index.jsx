@@ -13,8 +13,6 @@ import dynamic from 'next/dynamic';
 import Loading from "@/components/Loading";
 import Accordion from "@/components/Accordion";
 
-
-
 export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, worksData, testimonialData }) {
 
 
@@ -152,21 +150,60 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
             </div>
           </div>
         </section>
-        <section className="seo-report container-boxed">
+        <section className="seo-report container-boxed !my-[30px] !xl:my-[0]">
           <div className="mx-auto">
             <div className="wrpr ">
-              <div data-aos="fade-up" className="inner">
+              <div data-aos="fade-up" className="inner !bg-transparent !backdrop-blur-none">
                 <div className="wrpr wrpr-main">
-                  <div className="inner">
-                    <VideoHome
-                      url={pageData.seoVisibilityReportVideo && pageData.seoVisibilityReportVideo}
-                    />
+                  <div className="inner !bg-transparent xl:grid">
+                  {/* <LottieAnimation animationData={animationData} /> */}
+                  <div className="img-wrpr xl:mb-[0] sm:mb-[100px] mb-[40px]" data-aos="fade-up">
+                    
+                <div className="photo-box-wrpr">
+                  <Images
+                    imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-2.svg'}
+                    styles={''}
+                    quality={100}
+                    width={'500'}
+                    height={'500'}
+                    alt={'SEO expert Dubai'}
+                    placeholder={true}
+                    classes={'frame-1 block'}
+                  />
+                  <div className="photo-box">
+                    <figure>
+                      <Images
+                        imageurl={pageData.seoVisibilityReportImage.node.sourceUrl && pageData.seoVisibilityReportImage.node.sourceUrl}
+                        styles={''}
+                        quality={100}
+                        width={'500'}
+                        height={'500'}
+                        alt={pageData.seoVisibilityReportImage.node.altText && pageData.seoVisibilityReportImage.node.altText}
+                        placeholder={true}
+                        classes={'w-full block'}
+                      />
+                    </figure>
                   </div>
-                  <div className="content">
-                    <h3 dangerouslySetInnerHTML={{ __html: strippedHtml }} />
+                  <Images
+                    imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-1.svg'}
+                    styles={''}
+                    quality={100}
+                    width={'500'}
+                    height={'500'}
+                    alt={'SEO marketing agency uae'}
+                    placeholder={false}
+                    classes={'frame-1 block top-0'}
+                  />
+                </div>
+              </div>
+                 </div>
+                  <div className="content !p-0 !flex !items-center">
+                  <div>
+                  <h3 dangerouslySetInnerHTML={{ __html: strippedHtml }} />
                     <h2>{pageData.seoVisibilityReportHeading2 && pageData.seoVisibilityReportHeading2}</h2>
                     <p>{pageData.seoVisibilityReportHeadingDescription && pageData.seoVisibilityReportHeadingDescription}</p>
                     <button title="Text us" aria-label="Text us" className='btn' onClick={openOfferModal} >Text us</button>
+                  </div>
                   </div>
                 </div>
               </div>
