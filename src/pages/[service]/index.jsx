@@ -212,14 +212,14 @@ export async function getStaticPaths() {
   
       const servicePageData = await serviceData.json();
   
-      // Check if the servicePageData or pageData is null or undefined
-      // const pageData = servicePageData?.data?.pages?.nodes[0];
+      // Check if servicePageData or the specific page data is missing
+      const pageData = servicePageData?.data?.pages?.nodes[0];
   
-      // if (!pageData) {
-      //   return {
-      //     notFound: true, // Trigger 404 page
-      //   };
-      // }
+      if (!pageData) {
+        return {
+          notFound: true, // Trigger 404 page
+        };
+      }
   
       return {
         props: {
@@ -235,4 +235,5 @@ export async function getStaticPaths() {
       };
     }
   }
+  
   
