@@ -26,7 +26,7 @@ export default function Blogs({ blogPageDatas, getAllBlogsData }) {
 
   return (
     <>
-      <Metatags data={blogPageDatas} />
+      <Metatags data={blogPageDatas}  />
       <Layout>
         <AOSInit />
         <PageHeading heading={pageData.title && pageData.title} subHeading={pageData.pages.subHeading && pageData.pages.subHeading} />
