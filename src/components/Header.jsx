@@ -133,8 +133,8 @@ function Nav({ initialData, type }) {
             {/* {theme} */}
             <Logo 
             url={`${frontendUrl}images/upturnist-logo.webp`} 
-            alt="branding_and_digital_marketing_dubai_upturnist_logo" 
-            logoTitle="branding and digital marketing dubai upturnist logo" 
+            alt="digital marketing expert in Dubai_upturnist_logo" 
+            logoTitle="digital marketing expert in Dubai_upturnist_logo" 
             for_page={type}
             />
             <div className='wrpr--nav-1'>
