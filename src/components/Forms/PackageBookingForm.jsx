@@ -164,7 +164,7 @@ export default function PackageBookingForm({ data }) {
                     <div className="grid gap-5">
                         <div className="grid sm:gap-4 gap-3 mt-2">
                             <input
-                                className={`${errors.name ? 'border-1 border-red-500 w-full bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white' : 'border-0 w-full bg-sky-900 bg-opacity-30  backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white'} `}
+                                className={`${errors.name ? 'border-red-500' : null} input-custom`}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 //onBlur={changeValidate}
@@ -175,7 +175,7 @@ export default function PackageBookingForm({ data }) {
                             />
                             {errors.name && <p className='text-red-500 mb-3'>{errors.name}</p>}
                             <input
-                                className={`${errors.companyName ? 'border-1 border-red-500 w-full bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white' : 'border-0 w-full bg-sky-900 bg-opacity-30  backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white'} `}
+                                className={`${errors.companyName ? 'border-red-500' : null} input-custom`}
                                 value={companyName}
                                 onChange={(e) => setCompanyName(e.target.value)}
                                 //onBlur={changeValidate}
@@ -187,7 +187,7 @@ export default function PackageBookingForm({ data }) {
                             {errors.place && <p className='text-red-500 mb-3'>{errors.place}</p>}
 
                             <input
-                                className={`border-0 w-full bg-sky-900 bg-opacity-30  backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white`}
+                                className={`input-custom`}
                                 value={website}
                                 onChange={(e) => setWebsite(e.target.value)}
                                 //onBlur={changeValidate}
@@ -197,7 +197,7 @@ export default function PackageBookingForm({ data }) {
                             />
                             {errors.website && <p className='text-red-500 mb-3'>{errors.website}</p>}
                             <PhoneInput
-                                className={`${errors.phone ? 'phone-input border-1 border-red-500 w-full bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-5 p-5 pl-6 placeholder-white' : 'border-0 w-full bg-sky-900 bg-opacity-30  backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white'} `}
+                                className={`${errors.phone ? 'border-red-500' : null} input-custom`}
                                 placeholder="Phone"
                                 value={phone}
                                 onChange={setPhone}
@@ -206,7 +206,7 @@ export default function PackageBookingForm({ data }) {
                             />
                             {errors.phone && <p className='text-red-500 mb-3'>{errors.phone}</p>}
                             <textarea
-                                className={`border-0 w-full bg-sky-900 bg-opacity-30  backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white`}
+                                className={`input-custom`}
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 placeholder="Description"

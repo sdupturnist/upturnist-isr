@@ -221,7 +221,7 @@ export default function ScheduleCallForm() {
                                 <div className="sm:p-10 p-5">
                                     <div className="grid sm:gap-4 gap-3 mt-5" ref={formField}>
                                         <input
-                                            className={`${errors.name ? 'border-red-500' : 'border-white'} border w-full border-opacity-20 sm:p-5 p-4 placeholder-white bg-transparent rounded-md`}
+                                            className={`${errors.name ? 'border-red-500' : null} input-custom`}
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             //onBlur={changeValidate}
@@ -232,7 +232,7 @@ export default function ScheduleCallForm() {
                                         />
                                         {errors.name && <p className='text-red-500 mb-3'>{errors.name}</p>}
                                         <input
-                                            className={`${errors.email ? 'border-red-500' : 'border-white'} border w-full border-opacity-20 sm:p-5 p-4 placeholder-white bg-transparent rounded-md`}
+                                            className={`${errors.email ? 'border-red-500' : null} input-custom`}
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             // onBlur={changeValidate}
@@ -243,7 +243,7 @@ export default function ScheduleCallForm() {
                                         />
                                         {errors.email && <p className='text-red-500 mb-3'>{errors.email}</p>}
                                         <PhoneInput
-                                            className={`${errors.phone ? 'border-red-500' : 'border-white'} border w-full border-opacity-20 sm:p-5 p-4 placeholder-white bg-transparent rounded-md`}
+                                            className={`${errors.phone ? 'border-red-500' : null} input-custom phone-input`}
                                             placeholder="Phone"
                                             value={phone}
                                             onChange={setPhone}
@@ -253,7 +253,7 @@ export default function ScheduleCallForm() {
                                         {errors.phone && <p className='text-red-500 mb-3'>{errors.phone}</p>}
                                         <textarea
                                             rows="4"
-                                            className={`${errors.message ? 'border-red-500' : 'border-white'} border w-full border-opacity-20 sm:p-5 p-4 placeholder-white bg-transparent rounded-md`}
+                                            className={`${errors.message ? 'border-red-500' : null} input-custom`}
                                             value={message}
                                             onChange={(e) => setMessage(e.target.value)}
                                             //  onBlur={changeValidate}
@@ -261,7 +261,7 @@ export default function ScheduleCallForm() {
                                             name="message"
                                         ></textarea>
                                         <p>Your preferred mode of meeting</p>
-                                        <div className="grid gap-5 w-full rounded-3 border-white border border-opacity-20 sm:p-5 p-4 placeholder-white bg-transparent rounded-md text-white">
+                                        <div className="grid gap-5 w-full rounded-3 border-[#72d3ff38] border border-opacity-20 sm:p-5 p-4  bg-transparent rounded-md text-white">
                                             <div className="flex items-center">
                                                 <input
                                                     type="radio"

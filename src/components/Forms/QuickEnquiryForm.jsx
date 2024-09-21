@@ -159,7 +159,7 @@ export default function QuickContactForm() {
                     <div className='border-t border-opacity-10 border-sky-200 p-5 mt-3'>
                         <div className="grid sm:gap-4 gap-3">
                             <input
-                                className={`${errors.name ? 'border border-red-500 w-full border-opacity-80 rounded-3 sm:p-5 p-4 placeholder-white bg-transparent' : 'border border-white w-full border-opacity-20 rounded-3 sm:p-5 p-4 placeholder-white bg-transparent'} `}
+                                className={`${errors.name ? 'border-red-500' : null} input-custom`}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 //onBlur={changeValidate}
@@ -171,7 +171,7 @@ export default function QuickContactForm() {
                             {errors.name && <p className='text-red-500 mb-3'>{errors.name}</p>}
 
                             <input
-                                className={`${errors.email ? 'border border-red-500 w-full border-opacity-80 rounded-3 sm:p-5 p-4 placeholder-white bg-transparent' : 'border border-white w-full border-opacity-20 rounded-3 sm:p-5 p-4 placeholder-white bg-transparent'} `}
+                                className={`${errors.email ? 'border-red-500' : null} input-custom`}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 // onBlur={changeValidate}
@@ -182,7 +182,7 @@ export default function QuickContactForm() {
                             />
                             {errors.email && <p className='text-red-500 mb-3'>{errors.email}</p>}
                             <PhoneInput
-                                className={`${errors.phone ? 'border border-red-500 w-full border-opacity-80 rounded-3 sm:p-5 p-4 placeholder-white' : 'border border-white w-full border-opacity-20 rounded-3 sm:p-5 p-4 placeholder-white'} `}
+                                className={`${errors.phone ? 'border-red-500' : null} input-custom phone-input`}
                                 placeholder="Phone"
                                 value={phone}
                                 onChange={setPhone}

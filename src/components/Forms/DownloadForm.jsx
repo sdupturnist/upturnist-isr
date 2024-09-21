@@ -169,7 +169,7 @@ export default function DownloadForm({ data }) {
 
                             <div className="grid sm:gap-4 gap-3 mt-5">
                                 <input
-                                    className={`${errors.name ? 'border-1 border-red-500 w-full bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white' : 'border-0 w-full bg-sky-900 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white'} `}
+                                    className={`${errors.name ? 'border-red-500' : null} input-custom`}
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     //onBlur={changeValidate}
@@ -180,7 +180,7 @@ export default function DownloadForm({ data }) {
                                 />
                                 {errors.name && <p className='text-red-500 mb-3'>{errors.name}</p>}
                                 <input
-                                    className={`${errors.email ? 'border-1 border-red-500 w-full bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white' : 'border-0 w-full bg-sky-900 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white'} `}
+                                    className={`${errors.email ? 'border-red-500' : null} input-custom`}
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     // onBlur={changeValidate}
@@ -191,7 +191,7 @@ export default function DownloadForm({ data }) {
                                 />
                                 {errors.email && <p className='text-red-500 mb-3'>{errors.email}</p>}
                                 <PhoneInput
-                                    className={`${errors.phone ? 'phone-input border-1 border-red-500 w-full bg-sky-950 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-5 p-5 pl-6 placeholder-white' : 'border-0 w-full bg-sky-900 bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-3 sm:p-6 p-5 placeholder-white'} `}
+                                    className={`${errors.phone ? 'border-red-500' : null} input-custom phone-input`}
                                     placeholder="Phone"
                                     value={phone}
                                     onChange={setPhone}

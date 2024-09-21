@@ -10825,3 +10825,10 @@ textarea.input {
 //         bottom:0;
 //         background:#031e2de8;
 //       }
+
+
+
+  .input-custom {
+    @apply bg-transparent border border-[#72d3ff38] rounded-md p-[20px] hover:border-[#55caff5c] focus:border-[#55caff5c] transition-all; 
+    /* Adjust padding if necessary */
+  }
