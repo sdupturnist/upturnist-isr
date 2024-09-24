@@ -12,8 +12,17 @@ import { useModalContext } from "@/context/modalContext";
 import dynamic from 'next/dynamic';
 import Loading from "@/components/Loading";
 import Accordion from "@/components/Accordion";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { useRef } from "react";
+
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
 
 export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, worksData, testimonialData }) {
+
 
 
   const pageData = homePageData.data.pages.nodes[0].homePage
@@ -28,6 +37,51 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
 
 
   const { setModalFor, setShowModal } = useModalContext()
+
+
+
+  const aboutBottom = useRef();
+
+
+
+  useGSAP(
+    () => {
+      const section = document.querySelector('.section-about-bottom');
+
+      // Set initial styles for the section
+      gsap.set(section, {
+        backgroundImage: 'url(images/about-bottom-bg.webp)',
+        opacity: 0,
+        backgroundSize: 'cover', // Ensures the image covers the section
+        backgroundPosition: 'center', // Centers the image
+      }); // Start with opacity 0
+
+      // Create the animation for the section
+      gsap.to(section, {
+        opacity: 1, // Fade in the background image
+        scrollTrigger: {
+          trigger: section,
+          start: 'top center',
+          end: 'bottom center', // Adjust as needed
+          scrub: 1, // Smooth transition
+          // markers: true, // Uncomment for debugging
+
+          // Callbacks for entering and leaving the section
+          //onLeave: () => gsap.to(section, { opacity: 0 }), // Fade out when leaving
+          onEnterBack: () => gsap.to(section, { opacity: 1 }), // Fade in when re-entering
+        },
+      });
+    },
+    {
+      scope: aboutBottom,
+    }
+  );
+
+
+
+
+
+
 
 
   const openHeroModal = () => {
@@ -73,7 +127,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
 
 
   const BlurAnimation = dynamic(() => import('../components/BlurAnimation'), {
-   // loading: () => <Loading />,
+    // loading: () => <Loading />,
     ssr: false,
   });
 
@@ -102,16 +156,16 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
         <section className="hero-home mt-[-100px] ">
           <div className="container">
             <div className="wrpr">
-                <HeroContent
-              title={pageData && pageData.heroTitle}
-              animatedHeading={pageData && pageData.heroAnimatedHeading}
-              desc={pageData.heroDescription && pageData.heroDescription}
-              modalAction={openHeroModal}
+              <HeroContent
+                title={pageData && pageData.heroTitle}
+                animatedHeading={pageData && pageData.heroAnimatedHeading}
+                desc={pageData.heroDescription && pageData.heroDescription}
+                modalAction={openHeroModal}
               />
             </div>
           </div>
           <BackgroundAnimation />
-           </section>
+        </section>
         <section className="about">
           <div className="container">
             <div className="wrpr">
@@ -156,54 +210,54 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
               <div data-aos="fade-up" className="inner !bg-transparent !backdrop-blur-none">
                 <div className="wrpr wrpr-main">
                   <div className="inner !bg-transparent xl:grid">
-                  {/* <LottieAnimation animationData={animationData} /> */}
-                  <div className="img-wrpr xl:mb-[0] sm:mb-[100px] mb-[40px]" data-aos="fade-up">
-                    
-                <div className="photo-box-wrpr">
-                  <Images
-                    imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-2.svg'}
-                    styles={''}
-                    quality={100}
-                    width={'500'}
-                    height={'500'}
-                    alt={'SEO expert Dubai'}
-                    placeholder={true}
-                    classes={'frame-1 block'}
-                  />
-                  <div className="photo-box">
-                    <figure>
-                      <Images
-                        imageurl={pageData.seoVisibilityReportImage.node.sourceUrl && pageData.seoVisibilityReportImage.node.sourceUrl}
-                        styles={''}
-                        quality={100}
-                        width={'500'}
-                        height={'500'}
-                        alt={pageData.seoVisibilityReportImage.node.altText && pageData.seoVisibilityReportImage.node.altText}
-                        placeholder={true}
-                        classes={'w-full block'}
-                      />
-                    </figure>
+                    {/* <LottieAnimation animationData={animationData} /> */}
+                    <div className="img-wrpr xl:mb-[0] sm:mb-[100px] mb-[40px]" data-aos="fade-up">
+
+                      <div className="photo-box-wrpr">
+                        <Images
+                          imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-2.svg'}
+                          styles={''}
+                          quality={100}
+                          width={'500'}
+                          height={'500'}
+                          alt={'SEO expert Dubai'}
+                          placeholder={true}
+                          classes={'frame-1 block'}
+                        />
+                        <div className="photo-box">
+                          <figure>
+                            <Images
+                              imageurl={pageData.seoVisibilityReportImage.node.sourceUrl && pageData.seoVisibilityReportImage.node.sourceUrl}
+                              styles={''}
+                              quality={100}
+                              width={'500'}
+                              height={'500'}
+                              alt={pageData.seoVisibilityReportImage.node.altText && pageData.seoVisibilityReportImage.node.altText}
+                              placeholder={true}
+                              classes={'w-full block'}
+                            />
+                          </figure>
+                        </div>
+                        <Images
+                          imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-1.svg'}
+                          styles={''}
+                          quality={100}
+                          width={'500'}
+                          height={'500'}
+                          alt={'SEO marketing agency uae'}
+                          placeholder={false}
+                          classes={'frame-1 block top-0'}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <Images
-                    imageurl={'https://admin.upturnist.com/wp-content/uploads/2024/06/line-1.svg'}
-                    styles={''}
-                    quality={100}
-                    width={'500'}
-                    height={'500'}
-                    alt={'SEO marketing agency uae'}
-                    placeholder={false}
-                    classes={'frame-1 block top-0'}
-                  />
-                </div>
-              </div>
-                 </div>
                   <div className="content !p-0 !flex !items-center">
-                  <div>
-                  <h3 dangerouslySetInnerHTML={{ __html: strippedHtml }} />
-                    <h2>{pageData.seoVisibilityReportHeading2 && pageData.seoVisibilityReportHeading2}</h2>
-                    <p>{pageData.seoVisibilityReportHeadingDescription && pageData.seoVisibilityReportHeadingDescription}</p>
-                    <button title="Text us" aria-label="Text us" className='btn' onClick={openOfferModal} >Text us</button>
-                  </div>
+                    <div>
+                      <h3 dangerouslySetInnerHTML={{ __html: strippedHtml }} />
+                      <h2>{pageData.seoVisibilityReportHeading2 && pageData.seoVisibilityReportHeading2}</h2>
+                      <p>{pageData.seoVisibilityReportHeadingDescription && pageData.seoVisibilityReportHeadingDescription}</p>
+                      <button title="Text us" aria-label="Text us" className='btn' onClick={openOfferModal} >Text us</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -311,7 +365,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
           <div className="container">
             <div className="wrpr">
               <div className="col-left">
-                <h3 data-aos="fade-up" >{pageData.about2Heading && pageData.about2Heading}</h3>
+                <h3 className="lg:text-[3rem] md:text-[2.5rem] sm:text-[2rem] text-[2rem] leading-tight" data-aos="fade-up">{pageData.about2Heading && pageData.about2Heading}</h3>
               </div>
               <div className="col-right">
                 <p data-aos="fade-up" data-delay="500">{pageData.about2Description && pageData.about2Description}​</p>
@@ -320,7 +374,7 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
           </div>
           <BlurAnimation position="bottom left" />
         </section>
-        <section className="who-we-are">
+        <section className="who-we-are xl:pb-[100px] pb-[50px]">
           <div className="container">
             <div className="wrpr">
               <div className="lg:basis-[100%]">
@@ -336,13 +390,29 @@ export default function Home({ homePageData, moreServicesDatas, whoWeAreDatas, w
             </div>
           </div>
         </section>
-        <section className="about-bottom-2 text-center ">
-          <div className="container grid gap-[30px]">
-            <h3 data-aos="fade-up" >{pageData && pageData.aboutBottom2}</h3>
-            <div className="about-bottom-2" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html: pageData && pageData.aboutBottom2Content }} />
+
+
+
+        <section className="md:py-[100px] py-[30px] section-about-bottom xl:min-h-screen items-center flex relative overflow-hidden xl:text-start text-center" ref={aboutBottom}>
+          <div className="container relative z-10"> {/* Set z-index for content */}
+            <div className="xl:flex grid xl:gap-[70px]">
+              <div className="lg:basis-[50%]">
+                <h3 className="lg:text-[3rem] md:text-[2.5rem] sm:text-[2rem] text-[2rem] leading-tight" data-aos="fade-up">
+                  {pageData.aboutBottom2 && pageData.aboutBottom2}
+                </h3>
+                <div className="about-bottom-2 mt-[30px] xl:mb-[40px] !p-0" data-aos="fade-up" dangerouslySetInnerHTML={{ __html: pageData.aboutBottom2Content && pageData.aboutBottom2Content }} />
+              </div>
+              <div className="lg:basis-[50%] grid">
+                <div className="about-bottom-2 xl:mt-[30px] !p-0" data-aos="fade-up" dangerouslySetInnerHTML={{ __html: pageData.aboutBottom2Content2 && pageData.aboutBottom2Content2 }} />
+                <div className="about-bottom-2 !m-0 !p-0" data-aos="fade-up" dangerouslySetInnerHTML={{ __html: pageData.aboutBottom2ContentThree && pageData.aboutBottom2ContentThree }} />
+              </div>
+            </div>
           </div>
-          <BlurAnimation position="bottom left" />
+          <div className="absolute inset-0 after:absolute after:inset-0 after:bg-[#152a37] after:opacity-90 after:z-0 after:pointer-events-none" />
         </section>
+
+
+
         <section className="works">
           <div className="inner">
             <div className="wrpr">
@@ -404,10 +474,9 @@ export async function getStaticProps(context) {
         query: ` query Posts {
   pages(where: {title: "home"}) {
     nodes {
-
       seo {
         canonical
-focuskw
+        focuskw
         opengraphSiteName
         metaDesc
         metaKeywords
@@ -429,12 +498,15 @@ focuskw
           sourceUrl
         }
       }
-           seoKeywords{
-          seoKeywords
-        }
+      seoKeywords {
+        seoKeywords
+      }
       homePage {
-         aboutBottom2
-         aboutBottom2Content
+        aboutBottom2
+        aboutBottom2Content
+        aboutBottom2Content2
+        aboutBottom2ContentThree
+        aboutBottom2
         aboutHeadingTop
         about2Description
         about2Heading
@@ -478,7 +550,6 @@ focuskw
             sourceUrl
           }
         }
-       
       }
     }
   }

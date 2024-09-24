@@ -49,6 +49,42 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
   const services1 = useRef();
   const services2 = useRef();
   const services3 = useRef();
+  const aboutBottom = useRef();
+
+
+
+  useGSAP(
+    () => {
+      const section = document.querySelector('.section-about-bottom');
+
+      // Set initial styles for the section
+      gsap.set(section, {
+        backgroundImage: 'url(/images/about-bottom-bg.webp)',
+        opacity: 0,
+        backgroundSize: 'cover', // Ensures the image covers the section
+        backgroundPosition: 'center', // Centers the image
+      }); // Start with opacity 0
+
+      // Create the animation for the section
+      gsap.to(section, {
+        opacity: 1, // Fade in the background image
+        scrollTrigger: {
+          trigger: section,
+          start: 'top center',
+          end: 'bottom center', // Adjust as needed
+          scrub: 1, // Smooth transition
+          // markers: true, // Uncomment for debugging
+
+          // Callbacks for entering and leaving the section
+          //onLeave: () => gsap.to(section, { opacity: 0 }), // Fade out when leaving
+          onEnterBack: () => gsap.to(section, { opacity: 1 }), // Fade in when re-entering
+        },
+      });
+    },
+    {
+      scope: aboutBottom,
+    }
+  );
 
   useGSAP(
     () => {
@@ -207,7 +243,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
               </div>
             </div>
           </section>
-          <section className="lg:pt-[150px] sm:pt-[70px] pt-[50px] sm:pb-[50px] items-center relative sm:text-start grid gap-[150px] text-center" >
+          <section className="lg:pt-[150px] sm:pt-[70px] pt-[50px] sm:pb-[50px] items-center relative sm:text-start grid sm:gap-[150px] gap-[50px] text-center" >
            {sliderBanner && sliderBanner.map((item, key) => {
                 return (
                   <div key={key} className="xl:w-[90%] mx-auto" data-aos="fade-up" data-aos-delay={`${key + 1}00`}>
@@ -247,7 +283,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
              <BlurAnimation position="top right" />
    </section>
    <section>
-            <div className="container-boxed z-10 relative sm:pb-[150px] pb-[50px] px-4 text-center">
+            <div className="container-boxed z-10 relative sm:py-[150px] py-[50px] px-4 text-center">
               <div className="lg:w-10/12 grid gap-5 mx-auto">
                 <span className='md:text-[1.5rem] text-[1rem]' dangerouslySetInnerHTML={{ __html: pageData && pageData.landingPage1.about }} />
                 <div>
@@ -392,7 +428,7 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
             <div className="container z-10 relative sm:mb-16">
               <div>
                 <div>
-                  <div className="sm:w-10/12 w-11/12 mx-auto">
+                  <div className=" grid gap-[100px] sm:gap-0">
                     {pageData.landingPage1.aboutMore.split('||').map((item, key, array) => {
 
 
@@ -480,13 +516,41 @@ export default function BestBrandingDigitalMarketingPartnerUae({ ___pageData, al
             </div>
           </section>
 
-          <section className="about-bottom-2 text-center sm:pt-[100px]">
-            <div className="container grid gap-[30px]">
-              <h3 data-aos="fade-up" >{pageData && pageData.landingPage1.aboutBottom2Heading}</h3>
-              <div className="about-bottom-2 !sm:pt-[70px] !pt-0" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html: pageData && pageData.landingPage1.aboutBottom2Content }} />
+
+
+          <section className="md:py-[100px] py-[30px] section-about-bottom xl:min-h-screen items-center flex relative overflow-hidden xl:text-start text-center" ref={aboutBottom}>
+          <div className="container relative z-10"> {/* Set z-index for content */}
+            <div className="xl:flex grid xl:gap-[70px]">
+              <div className="lg:basis-[50%]">
+                <h3 className="lg:text-[3rem] md:text-[2.5rem] sm:text-[2rem] text-[2rem] leading-tight" data-aos="fade-up">
+                  {pageData.landingPage1.aboutBottom2Heading && pageData.landingPage1.aboutBottom2Heading}
+                </h3>
+                <div className="about-bottom-2 mt-[30px] xl:mb-[40px] !p-0"  dangerouslySetInnerHTML={{ __html: pageData.landingPage1.aboutBottom2Content && pageData.landingPage1.aboutBottom2Content }} />
+              </div>
+              <div className="lg:basis-[50%] grid">
+              
+                <div className="about-bottom-2 xl:mt-[30px] !p-0" data-aos="fade-up" dangerouslySetInnerHTML={{ __html: pageData.landingPage1.aboutBottomNewTwo && pageData.landingPage1.aboutBottomNewTwo }} />
+                <div className="about-bottom-2 !m-0 !p-0" data-aos="fade-up" dangerouslySetInnerHTML={{ __html: pageData.landingPage1.aboutbottom2contentthree && pageData.landingPage1.aboutbottom2contentthree }} />
+              </div>
             </div>
-            <BlurAnimation position="bottom left" />
-          </section>
+          </div>
+          <div className="absolute inset-0 after:absolute after:inset-0 after:bg-[#152a37] after:opacity-90 after:z-0 after:pointer-events-none" />
+        </section>
+
+
+ 
+
+        {/* <section className="about-bottom-2 text-center sm:pt-[100px]"> */}
+            {/* <div className="container grid gap-[30px]"> */}
+              {/* <h3 data-aos="fade-up" >{pageData && pageData.landingPage1.aboutBottom2Heading}</h3> */}
+              {/* <div className="about-bottom-2 !sm:pt-[70px] !pt-0" data-aos="fade-up" data-delay="500" dangerouslySetInnerHTML={{ __html: pageData && pageData.landingPage1.aboutBottom2Content }} /> */}
+            {/* </div> */}
+            {/* <BlurAnimation position="bottom left" /> */}
+          {/* </section> */}
+{/*  */}
+
+
+      
 
           <section className="sm:py-32 py-6 relative overflow-x-hidden text-center">
             <div className="z-10 relative">
@@ -576,10 +640,9 @@ export async function getStaticProps(context) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        query: `  query Posts {
+        query: `query Posts {
   pages(where: {id: 3915}) {
     nodes {
-  
       title
       content
       featuredImage {
@@ -588,9 +651,9 @@ export async function getStaticProps(context) {
           altText
         }
       }
-           seoKeywords{
-          seoKeywords
-        }
+      seoKeywords {
+        seoKeywords
+      }
       landingPage1 {
         seoBackgound {
           node {
@@ -632,13 +695,15 @@ export async function getStaticProps(context) {
         testimonialHeading
         aboutBottom2Heading
         aboutBottom2Content
+   aboutBottomNewTwo
+        aboutbottom2contentthree
         faqHeading
         faq
       }
       seo {
         canonical
-focuskw
-opengraphSiteName
+        focuskw
+        opengraphSiteName
         metaDesc
         metaKeywords
         title
